@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" th:attr="content=${description}">
+    <meta name="keywords" th:attr="content=${keywords}">
+    <title th:text="${title}">春江鞋业|chunjiangshoes</title>
+    <link rel="icon" th:href="@{${iconUrl}}" type="image/x-icon">
+    <link rel="shortcut icon" th:href="@{${iconUrl}}" type="image/x-icon">
+    <script src="libs/scrollReveal/scrollreveal.min.js"></script>
+    <link
+            rel="stylesheet"
+            href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css"
+    />
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="libs/glide/glide.core.min.css" />
+    <link rel="stylesheet" href="libs/glide/glide.theme.min.css" />
+
+
+    <meta name="applicable-device" content="pc,mobile">
+    <link href="new/css/bootstrap.css" rel="stylesheet">
+    <link href="new/css/bxslider.css" rel="stylesheet">
+    <link href="new/css/style.css" rel="stylesheet">
+    <link
+            rel="stylesheet"
+            href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css"
+    />
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+    <script src="new/js/jquery.min.js"></script>
+    <script src="new/js/bxslider.min.js"></script>
+    <script src="new/js/common.js"></script>
+    <script src="new/js/bootstrap.js"></script>
+    <!--[if lt IE 9]>
+    <script src="new/js/html5shiv.min.js"></script>
+    <script src="new/js/respond.min.js"></script><![endif]-->
+
+
+    <style>
+
+        .main {
+            margin: 0 auto;
+        }
+
+        .breadcrumb {
+            border-bottom: 1px solid #dcdcdc;
+            min-height: 40px;
+            width: 80%;
+            margin: 36px auto;
+            background: #fff;
+            z-index: 999;
+            color: #999;
+            font-size: 16px;
+            height: 60px;
+        }
+        .breadcrumb a {
+            color: #999;
+            text-decoration: none;
+
+        }
+
+        .breadcrumb .container {
+            width: 100%;
+        }
+
+
+
+        .state-column p {
+            text-align: center;
+            line-height: 24px;
+            padding: 20px 0;
+            background: #f5f5f5;
+            margin: 0 0 10px;
+            color: #666;
+        }
+
+        .pull-left {
+            float: left !important;
+        }
+
+
+        .hx_list .row p {
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 0px;
+            line-height: 26px;
+        }
+        p {
+            margin: 0 0 10px;
+        }
+        .hx_list .row .img img {
+            display: block;
+            margin: 0 auto;
+            vertical-align: middle;
+            width: auto;
+        }
+
+
+
+
+
+        @media screen and (max-width: 1024px){
+            .pull-right {
+                display: none;
+            }
+            .develop .info {
+                width: auto;
+            }
+        }
+
+        #container1{
+            /*地图(容器)显示大小*/
+            width:250px;
+            height:250px;
+        }
+    </style>
+</head>
+<body>
+
+<header th:include="~{publicZH::head1}"></header>
+
+<div class="page_bg" style="background: url(http://www.js-dw.com/static/upload/image/20200626/1593168529817833.jpg) center center;"></div>
+
+<div class="main container">
+
+    <div class=" breadcrumb">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="pull-left"><a href="/index">首页</a>&gt;<a class="active" th:text="${navbread}">关于春江</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--    <div id="navbar-r" class="panel panel-default pull-right" style="position: fixed; bottom: 100px; left: 100px; z-index: 999">-->
+<!--        &lt;!&ndash; Default panel contents &ndash;&gt;-->
+<!--        <div class="panel-heading" style="background-color: #1a355e; color: white;font-size: 18px; font-weight: bold">春江鞋业</div>-->
+
+<!--        &lt;!&ndash; List group &ndash;&gt;-->
+<!--        <ul class="list-group" role="tablist">-->
+<!--            <li class="list-group-item"><a href="#about">春江简介</a></li>-->
+<!--            <li class="list-group-item"><a href="#values">企业文化</a></li>-->
+<!--            <li class="list-group-item"><a href="#history">发展历程</a></li>-->
+<!--            <li class="list-group-item"><a href="#structure">组织架构</a></li>-->
+<!--            <li class="list-group-item"><a href="#qc">荣誉资质</a></li>-->
+<!--        </ul>-->
+<!--    </div>-->
+   <div style="width: 80%; margin: 0 auto" th:utext="${content}"></div>
+
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom footer_nav">
+    <div class="foot_nav btn-group dropup"><a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                                              aria-expanded="false" href="javascript:;"><span
+            class="glyphicon glyphicon-share btn-lg" aria-hidden="true"></span> 分享</a>
+
+    </div>
+    <div class="foot_nav"><a href="javascript:;"><span class="glyphicon glyphicon-phone btn-lg"
+                                                       aria-hidden="true"></span>手机</a></div>
+    <div class="foot_nav">
+        <button id="foot_btn" type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                aria-controls="navbar">
+            <a id="gotocate" href="javascript:;"><span class="glyphicon glyphicon-th-list btn-lg"></span> 分类 </a>
+        </button>
+    </div>
+
+    <div class="foot_nav"><a id="gototop" href="javascript:;"><span class="glyphicon glyphicon-circle-arrow-up btn-lg"
+                                                                    aria-hidden="true"></span>顶部</a></div>
+</nav>
+<footer th:include="~{publicZH::footer1}"></footer>
+
+<script src="libs/anime/anime.min.js"></script>
+<script src="libs/glide/glide.min.js"></script>
+<script src="libs/isotope/isotope.pkgd.min.js"></script>
+<script src="libs/smooth-scroll/smooth-scroll.polyfills.min.js"></script>
+<script src="index1.js"></script>
+<script src="https://map.qq.com/api/gljs?v=1.exp&key=ULXBZ-MTXKD-LEN4G-PVOYH-RGD72-3OBS6"></script>
+
+<script>
+    window.onload = initMap
+    //地图初始化函数，本例取名为init，开发者可根据实际情况定义
+    function initMap() {
+        //定义地图中心点坐标
+        var center = new TMap.LatLng(35.562343,118.485432)
+        //定义map变量，调用 TMap.Map() 构造函数创建地图
+        var map = new TMap.Map(document.getElementById('container1'), {
+            center: center,//设置地图中心点坐标
+            zoom: 17,   //设置地图缩放级别
+            pitch: 43.5,  //设置俯仰角
+            rotation: 45    //设置地图旋转角度
+        });
+
+        //创建并初始化MultiMarker
+        var markerLayer = new TMap.MultiMarker({
+            map: map,  //指定地图容器
+            //样式定义
+            styles: {
+                //创建一个styleId为"myStyle"的样式（styles的子属性名即为styleId）
+                "myStyle": new TMap.MarkerStyle({
+                    "width": 25,  // 点标记样式宽度（像素）
+                    "height": 35, // 点标记样式高度（像素）
+                    "src": 'favicon.ico',  //图片路径
+                    //焦点在图片中的像素位置，一般大头针类似形式的图片以针尖位置做为焦点，圆形点以圆心位置为焦点
+                    "anchor": { x: 16, y: 32 }
+                })
+            },
+            //点标记数据数组
+            geometries: [{
+                "id": "1",   //点标记唯一标识，后续如果有删除、修改位置等操作，都需要此id
+                "styleId": 'myStyle',  //指定样式id
+                "position": new TMap.LatLng(35.561536,118.485778),  //点标记坐标位置
+                "properties": {//自定义属性
+                    "title": "春江鞋业"
+                }
+            }
+            ]
+        });
+    }
+</script>
+</body>
+</html>

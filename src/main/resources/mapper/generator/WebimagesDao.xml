@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jiehui.chunjiang.dao.WebimagesDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.jiehui.chunjiang.entity.WebimagesEntity" id="webimagesMap">
+        <result property="id" column="id"/>
+        <result property="iname" column="name"/>
+        <result property="category" column="category"/>
+        <result property="url" column="url"/>
+        <result property="link" column="link"/>
+        <result property="iorder" column="iorder"/>
+    </resultMap>
+
+    <select id="selectBigPicture" resultMap="webimagesMap">
+        select * from tb_webimages
+    </select>
+
+    <select id="selectPictureByCat" resultMap="webimagesMap">
+        select * from tb_webimages where category = #{category}
+    </select>
+
+</mapper>

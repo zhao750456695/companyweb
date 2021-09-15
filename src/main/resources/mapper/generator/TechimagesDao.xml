@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jiehui.chunjiang.dao.TechimagesDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.jiehui.chunjiang.entity.TechimagesEntity" id="techimagesMap">
+        <result property="id" column="id"/>
+        <result property="iname" column="iname"/>
+        <result property="descri" column="descri"/>
+        <result property="url" column="url"/>
+        <result property="updated" column="updated"/>
+        <result property="category" column="category"/>
+        <result property="iorder" column="iorder" />
+    </resultMap>
+
+    <select id="selectMTechimagesByCategory" resultMap="techimagesMap">
+        SELECT * FROM `tb_techimages` WHERE category = 1 ORDER BY iorder
+    </select>
+
+    <select id="selectSTechimagesByCategory" resultMap="techimagesMap">
+        SELECT * FROM `tb_techimages` WHERE category = 2 ORDER BY iorder
+    </select>
+
+    <select id="selectETechimagesByCategory" resultMap="techimagesMap">
+        SELECT * FROM `tb_techimages` WHERE category = 3 ORDER BY iorder
+    </select>
+</mapper>

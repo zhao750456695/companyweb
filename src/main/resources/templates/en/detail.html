@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" th:attr="content=${description}">
+    <meta name="keywords" th:attr="content=${keywords}">
+    <title th:text="${title}">春江鞋业|chunjiangshoes</title>
+    <link rel="icon" th:href="@{${iconUrl}}" type="image/x-icon">
+    <link rel="shortcut icon" th:href="@{${iconUrl}}" type="image/x-icon">
+<!--    <script type="text/javascript" async="" src="//stm-cdn.cn.miaozhen.com/plugins/heatmap.js?v=898848" id="plugin_2015_heatmap"></script>-->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"> </script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"> </script>
+
+<!--    <script type="text/javascript" async="" src="//stm-cdn.cn.miaozhen.com/clicki.min.js?v=5393090"></script>-->
+<!--    <script src="//tag.cdnmaster.cn/tmjs/tm.js?id=TM-604771" async=""></script>-->
+
+    <script th:src="@{~/libs/scrollReveal/scrollreveal.min.js}"></script>
+
+    <link rel="stylesheet" th:href="@{~/css/bootstrap/bootstrap.min.css}" />
+    <link
+            rel="stylesheet"
+            href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css"
+    />
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.0/css/swiper.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" th:href="@{~/libs/glide/glide.core.min.css}" />
+    <link rel="stylesheet" th:href="@{~/libs/glide/glide.theme.min.css}" />
+
+    <link rel="stylesheet" th:href="@{~/style.css}" />
+
+    <style th:inline="css">
+        .headimg {
+            background: url([[${headimag}]]) 0px 0px / contain no-repeat fixed;
+            padding-top: 27%;
+            height: 0;
+            /*position: relative;*/
+            /*top: -80px;*/
+            z-index: 50;
+        }
+
+        header {
+            height: 75px;
+            background: rgba(0, 0, 0, 0.8);
+            margin: 0 auto;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+
+
+        .breadcrumb {
+            border-bottom: 1px solid #dcdcdc;
+            min-height: 40px;
+            width: 80%;
+            margin: 36px auto;
+            background-color: #fff;
+        }
+        .breadcrumb a {
+            color: #999;
+            text-decoration: none;
+
+        }
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: block;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            padding-inline-start: 40px;
+        }
+        .filter .filter-property ul li {
+            height: 2.5em;
+            display: list-item;
+            text-align: -webkit-match-parent;
+        }
+        .filter .filter-property ul li a {
+            display: block;
+            color: #898989;
+        }
+        .filter .filter-property ul li a.off span {
+            background-position: 0 0;
+        }
+        .filter .filter-property ul li a.on span {
+            background-position: 0 -14px;
+        }
+        .filter .filter-property ul li a span {
+            float: left;
+            background: url(img/filter-op-2020.png) no-repeat 0 0;
+            width: 14px;
+            height: 14px;
+            margin-right: .5em;
+            margin-top: .2em;
+        }
+
+        .filter .filter-property ul li a small {
+            margin-top: .5em;
+            font-size: 1em;
+        }
+        .filter .filter-property h4 {
+            height: 2em;
+        }
+
+        .pull-right {
+            float: right!important;
+        }
+        .filter a {
+            text-decoration: none;
+            color: #898989;
+        }
+        .product-detail {
+            margin-top: .75em;
+            margin-bottom: 4em;
+        }
+        .container {
+            width: 950px;
+        }
+        .product-detail .product-media {
+            width: 370px;
+            position: relative;
+            top: 0;
+            left: 0;
+        }
+        .pull-left {
+            float: left!important;
+        }
+        .product-detail .product-media .icon-zoom {
+            width: 38px;
+            height: 38px;
+            position: absolute;
+            top: 320px;
+            left: 320px;
+            z-index: 2;
+        }
+        .product-detail .product-media .product-like {
+            margin-top: 1.75em;
+        }
+        .product-detail .product-media .details-thumbnails {
+            margin: 1em 0;
+            width: 75%;
+            position: relative;
+            top: 0;
+            left: 0;
+        }
+        .product-detail .product-property {
+            width: 57%;
+        }
+        .pull-right {
+            float: right!important;
+        }
+        .product-detail .product-property .product-action {
+            width: 28%;
+        }
+        .product-detail .product-property .product-action .col-md-6 {
+            padding-left: 0;
+            padding-right: 0;
+        }
+        .product-detail a {
+            color: #747474;
+        }
+        .product-detail .product-property .product-action .col-md-6 {
+            padding-left: 0;
+            padding-right: 0;
+        }
+        .product-detail .product-property .product-title {
+            width: 74%;
+            font-weight: 700;
+        }
+        .product-detail .product-property .product-title h1 {
+            font-size: 1.25em;
+            margin-top: 0;
+        }
+        .product-detail .product-property .product-title .product-fab img {
+            float: left;
+        }
+        .carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+        .product-detail .product-property .product-title .product-fab span {
+            margin-left: 1em;
+            float: left;
+            width: 84%;
+            color: #1b365d;
+        }
+        .product-detail .product-property .property-list {
+            margin-top: .75em;
+            margin-bottom: 5em;
+            min-height: 280px;
+        }
+        .product-detail .product-property .property-list .property-list-item .property-list-item-title {
+            border-bottom: 1px solid #848487;
+        }
+        .product-detail a {
+            color: #747474;
+        }
+        .product-detail .product-property .property-list .property-list-item .property-list-item-title h3 {
+            font-size: 1.1em;
+            margin: 1.25em 0;
+        }
+        .product-detail .product-property .property-list .property-list-item .property-list-item-content {
+            border-bottom: 1px solid #848487;
+            padding: 1.75em 0;
+        }
+        ol, ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .product-detail .product-property .property-list .property-list-item .property-list-item-content li {
+            float: left;
+            width: 50%;
+            line-height: 1.75em;
+            background: url(img/bg-property-li.png) no-repeat 0 .75em;
+            padding-left: 1.25em;
+        }
+        .product-detail .product-property .property-list .property-list-item .property-list-item-title {
+            border-bottom: 1px solid #848487;
+        }
+        .product-detail .product-property .buy-link {
+            width: 80%;
+            margin-left: -15px;
+        }
+        .center-block {
+            display: block;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        .product-detail .product-media .details-thumbnails .swiper-button-next {
+            right: -2em;
+            background-position: -1em 0!important;
+        }
+        .product-detail .product-media .details-thumbnails .swiper-button-prev {
+            left: -2em;
+        }
+        .product-detail .product-media .details-thumbnails .swiper-button-next, .product-detail .product-media .details-thumbnails .swiper-button-prev {
+            width: 1em;
+            height: 2em;
+            background: url(img/bg-swiper-page.png) no-repeat 0 0;
+            top: 3.5em;
+            color: #c3c3c3;
+        }
+
+
+        .product-detail .product-media .product-like .social {
+            width: 23px;
+            height: 23px;
+            background: url(img/icon-footer-social.png) no-repeat 0 0;
+        }
+        .product-detail .product-media .product-like a {
+            display: inline-block;
+        }
+        .product-detail .product-media .product-like .like {
+            height: 23px;
+            line-height: 23px;
+            margin-right: 2em;
+        }
+        .pull-left {
+            float: left!important;
+        }
+        .swiper-button-next:before,
+        .swiper-button-next:after,
+        .swiper-button-prev:before,
+        .swiper-button-prev:after{
+            content: none;
+        }
+        .product-detail .product-media #target {
+            width: 380px;
+            height: 380px;
+            position: absolute;
+            top: 0;
+            left: 380px;
+            z-index: 5;
+            border: solid 1px #898989;
+            display: none;
+        }
+        .img-responsive {
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+<header th:include="~{publicEN::head1}"></header>
+
+<div class="headimg">
+
+</div>
+
+
+<div class=" breadcrumb">
+    <a href="/">HOME</a>&gt;<a class="active">PRODUCT</a>
+</div>
+
+<div class="container product-detail">
+    <div class="product-media pull-left">
+        <div id="zoom" class="zoom">
+            <img class="img-responsive" th:src="@{${goods.getListImage()}}">
+        </div>
+        <div class="icon-zoom"><img th:src="@{~/img/test/icon-zoom.png}"></div>
+        <div id="target" >
+            <img role="presentation" th:src="@{${goods.getListImage()}}" class="zoomImg" style="position: absolute; top: -501.865px; left: -43.5676px; opacity: 0; width: 1000px; height: 1000px; border: none; max-width: none; max-height: none;">
+        </div>
+        <div class="product-like">
+<!--            <div class="like pull-left"><a class="rank-like popularity" data-popularity-id="29839" href="javascript:;"><span class="glyphicon glyphicon-heart"></span>&nbsp;&nbsp;<small>20</small>人气</a></div>-->
+<!--            <div class="jiathis_style">-->
+<!--                <a href="javascript:;" class="jiathis_button_weixin social wechat"></a>-->
+<!--                <a href="javascript:;" class="jiathis_button_tsina social weibo"></a>-->
+<!--            </div>-->
+        </div>
+        <div class="details-thumbnails">
+            <div class="swiper-container swiper-container-horizontal">
+                <div th:each="hp,iterStat:${headImages}" class="swiper-wrapper">
+                    <div class="swiper-slide col-md-4 on swiper-slide-active" style="width: 92.6667px;">
+                        <a href="javascript:;"><img th:src="@{${hp.getImageUrl()}}" class="img-responsive" alt=""></a>
+                    </div>
+                    <!--                    <div class="swiper-slide col-md-4 swiper-slide-next" style="width: 92.6667px;">-->
+                    <!--                        <a href="javascript:;"><img src="img/test/angle1.jpg" class="img-responsive" alt="HCE820A01 Q8i智能一体机"></a>-->
+                    <!--                    </div>-->
+                    <!--                    <div class="swiper-slide col-md-4" style="width: 92.6667px;">-->
+                    <!--                        <a href="javascript:;"><img src="img/test/angle2.jpg" class="img-responsive" alt="HCE820A01 Q8i智能一体机"></a>-->
+                    <!--                    </div>-->
+                    <!--                    <div class="swiper-slide col-md-4" style="width: 92.6667px;">-->
+                    <!--                        <a href="javascript:;"><img src="img/test/angle3.jpg" class="img-responsive" alt="HCE820A01 Q8i智能一体机"></a>-->
+                    <!--                    </div>-->
+                    <!--                    <div class="swiper-slide col-md-4" style="width: 92.6667px;">-->
+                    <!--                        <a href="javascript:;"><img src="img/test/hce820a01_曲线.jpg" class="img-responsive" alt="HCE820A01 Q8i智能一体机"></a>-->
+                    <!--                    </div>-->
+                    <!--                    <div class="swiper-slide col-md-4" style="width: 92.6667px;">-->
+                    <!--                        <a href="javascript:;"><img src="img/test/hce820a01_曲线_305坑距.jpg" class="img-responsive" alt="HCE820A01 Q8i智能一体机"></a>-->
+                    <!--                    </div>-->
+                    <!--                    <div class="swiper-slide col-md-4" style="width: 92.6667px;">-->
+                    <!--                        <a href="javascript:;"><img src="img/test/hce820a01_曲线_400坑距.jpg" class="img-responsive" alt="HCE820A01 Q8i智能一体机"></a>-->
+                    <!--                    </div>-->
+                </div>
+            </div>
+            <div class="swiper-button-prev swiper-button-disabled"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </div>
+    <div class="product-property pull-right">
+        <div class="product-action pull-right">
+<!--            <a class="col-md-6 btn-comparison" href="javascript:;" data-product-id="29839" data-product-thum="/assets/images/temp/product/product-detail.jpg" data-product-name="Q8i" data-product-model="HCE820A01"><span class="glyphicon glyphicon-plus-sign">&nbsp;</span>对比</a>-->
+<!--            <a class="col-md-6"><span class="glyphicon glyphicon-download">&nbsp;</span>下载</a>-->
+        </div>
+        <div class="product-title">
+            <h1 th:text="${goods.getGoodsName()}" style="font-size: 36px;font-weight: bold">HCE820A01 Q8i智能一体机</h1>
+            <div class="product-fab clearfix">
+                <img th:src="@{~/img/test/icon-fab.jpg}" class="img-responsive">
+                <span>hot</span>
+            </div>
+        </div>
+        <div class="property-list">
+            <div class="property-list-item">
+                <div class="property-list-item-title">
+                    <a href="javascript:;" class="pull-right"><span class="glyphicon glyphicon-plus"></span></a>
+                    <h3 style="font-size: 16px;font-weight: bold">Specs</h3>
+                </div>
+                <div class="property-list-item-content clearfix hidden">
+                    <ul th:each="par,stat:${params}">
+                        <li th:text="${par}">类型：智能一体机</li>
+                        <!--                        <li>加热方式：即热式</li>-->
+                        <!--                        <li>尺寸：696x412x515mm</li>-->
+                        <!--                        <li>要求水压：0.14MPa(动态)~0.60MPa(静态压力)</li>-->
+                        <!--                        <li>冲水量：4.8L</li>-->
+                        <!--                        <li>孔距：305/401mm</li>-->
+                        <!--                        <li>盖板材质：PP阻燃缓降盖板</li>-->
+                        <!--                        <li>备注：配置遥控器</li>-->
+                    </ul>
+                </div>
+            </div>
+            <div class="property-list-item">
+                <div class="property-list-item-title">
+                    <a href="javascript:;" class="pull-right"><span class="glyphicon glyphicon-plus"></span></a>
+                    <h3 style="font-size: 16px;font-weight: bold">Features</h3>
+                </div>
+                <div class="property-list-item-content clearfix hidden">
+                    <ul th:each="br,stat:${brilliant}">
+                        <li th:text="${br}">水劲能冲水系统</li>
+                        <!--                        <li>一键旋钮，化繁为简</li>-->
+                        <!--                        <li>活水即热</li>-->
+                        <!--                        <li>SIAA银离子抗菌座圈</li>-->
+                        <!--                        <li>电解水除菌 </li>-->
+                        <!--                        <li>喷嘴自洁</li>-->
+                        <!--                        <li>臀洗、妇洗、移动清洗</li>-->
+                        <!--                        <li>微晶抗污釉</li>-->
+                        <!--                        <li>离座自动冲水</li>-->
+                        <!--                        <li>座圈加热</li>-->
+                        <!--                        <li>暖风烘干</li>-->
+                        <!--                        <li>除臭</li>-->
+                        <!--                        <li>夜灯</li>-->
+                        <!--                        <li>智能遥控</li>-->
+                        <!--                        <li>五重安全防护</li>-->
+                    </ul>
+                </div>
+            </div>
+            <!--            <div class="property-list-item">-->
+            <!--                <div class="property-list-item-title">-->
+            <!--                    <a href="javascript:;" class="pull-right"><span class="glyphicon glyphicon-plus"></span></a>-->
+            <!--                    <h3>产品明细</h3>-->
+            <!--                </div>-->
+            <!--                <div class="property-list-item-content clearfix hidden">-->
+            <!--                    <ul>-->
+            <!--                        <li>坐便器陶瓷体：1 套</li>-->
+            <!--                        <li>坐便器智能盖板：1 套</li>-->
+            <!--                        <li> 大号（衡压法兰）： 1 个 </li>-->
+            <!--                        <li> 排水方式： 地排</li>-->
+            <!--                        <li>遥控器组件（含电池）：1 套</li>-->
+            <!--                        <li>水路配件（含解压阀，过滤网，软管）：1 套 </li>-->
+            <!--                        <li>锂电池：1个</li>-->
+            <!--                    </ul>-->
+            <!--                </div>-->
+            <!--            </div>-->
+        </div>
+        <div class="buy-link clearfix">
+<!--            <p class="col-md-12">Request a Quote：</p>-->
+            <a class="col-md-4" href="#">Request a Quote</a>
+<!--            <a class="col-md-4" onclick="trackEvent('nav', 'tmall_HCE820A01');" target="_blank" href="#"><img src="img/test/btn-tmall.jpg" class="img-responsive"></a>-->
+<!--            <a class="col-md-4" onclick="trackEvent('nav', 'jd_HCE820A01');" target="_blank" href="#"><img src="img/test/btn-jd.jpg" class="img-responsive"></a>-->
+        </div>
+    </div>
+    <!--product property end -->
+</div>
+
+<div th:each="det,stat:${detailImages}">
+    <img th:src="@{${det.getImageUrl()}}" class="img-responsive center-block">
+</div>
+
+<footer th:include="~{publicEN::footer}"></footer>
+<script type="text/javascript" th:src="@{~/js/jquery-3.4.1.min.js}"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script th:src="@{~/js/bootstrap/bootstrap.min.js}"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/collect.js/4.0.12/collect.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-zoom/1.7.20/jquery.zoom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.0/js/swiper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<script th:src="@{~/js/swiper.js}"></script>
+<script th:src="@{~/js/collect.js}"></script>
+
+
+<script th:src="@{~/js/common.min.js?v=v20180503}"></script>
+
+
+<script th:src="@{~/libs/anime/anime.min.js}"></script>
+<script th:src="@{~/libs/glide/glide.min.js}"></script>
+<script th:src="@{~/libs/isotope/isotope.pkgd.min.js}"></script>
+<script th:src="@{~/libs/smooth-scroll/smooth-scroll.polyfills.min.js}"></script>
+<script th:src="@{~/js/product.min.js}"></script>
+<script th:src="@{~/index1.js}"></script>
+
+<script>
+    var $span = $('.filter .filter-property ul li a span');
+    var $a = $('.filter .filter-property ul li a');
+
+    $span.click(function(){
+        var res = $(this).parent().hasClass('on');
+        if (res){
+            $(this).parent().attr("class","off");
+        } else {
+            $(this).parent().attr("class","on");
+        }
+    })
+
+    var $product = $('.product-item');
+    $product.hover(function () {
+        var $this = $(this);
+        $this.attr("style", "{display: none}")
+
+    })
+
+
+    $('#zoom').zoom({
+        target: '#target',
+        onZoomIn: function(){
+            $('#target').css('display', 'block');
+        },
+        onZoomOut: function(){
+            $('#target').css('display', 'none');
+        }
+    });
+</script>
+</body>
+</html>

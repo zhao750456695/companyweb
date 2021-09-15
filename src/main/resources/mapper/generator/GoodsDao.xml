@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jiehui.chunjiang.dao.GoodsDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.jiehui.chunjiang.entity.GoodsEntity" id="goodsMap">
+        <result property="goodsId" column="goods_id"/>
+        <result property="goodsName" column="goods_name"/>
+        <result property="goodsCode" column="goods_code"/>
+        <result property="goodscategoryId" column="goodsCategory_id"/>
+        <result property="goodsTitle" column="goods_title"/>
+        <result property="updated" column="updated"/>
+        <result property="params" column="params"/>
+        <result property="brilliant" column="brilliant"/>
+        <result property="listImage" column="list_image"/>
+        <result property="category" column="category"/>
+    </resultMap>
+
+    <select id="selectHomeGoods" resultMap="goodsMap">
+        select * from tb_goods where show_in_index = 1
+    </select>
+
+    <select id="selectPageCategoryVo" resultMap="goodsMap">
+        SELECT * FROM `tb_goods` WHERE find_in_set(#{id}, goodsCategory_id)
+    </select>
+
+    <select id="selectGoodsByCode" resultMap="goodsMap">
+        SELECT * FROM `tb_goods` WHERE goods_code = #{code}
+    </select>
+
+    <select id="queryGoodsInFilter" resultMap="goodsMap"  parameterType="List">
+        SELECT * FROM tb_goods WHERE 1=1 AND
+        <foreach collection="list" index="index" item="cat" open="" separator="AND" close="">
+            FIND_IN_SET(#{cat},goodsCategory_id)
+        </foreach>
+    </select>
+</mapper>

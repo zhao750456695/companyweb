@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" th:attr="content=${description}">
+    <meta name="keywords" th:attr="content=${keywords}">
+    <title th:text="${title}">春江鞋业|chunjiangshoes</title>
+    <link rel="icon" th:href="@{${iconUrl}}" type="image/x-icon">
+    <link rel="shortcut icon" th:href="@{${iconUrl}}" type="image/x-icon">
+    <script th:src="@{~/libs/scrollReveal/scrollreveal.min.js}"></script>
+    <link
+            rel="stylesheet"
+            href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css"
+    />
+    <link rel="stylesheet"th:href="@{~/css/base.css}">
+    <link rel="stylesheet" th:href="@{~/css/bootstrap/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{~/libs/glide/glide.core.min.css}" />
+    <link rel="stylesheet" th:href="@{~/libs/glide/glide.theme.min.css}" />
+    <link rel="stylesheet" th:href="@{~/style.css}" />
+
+    <style th:inline="css">
+        .headimg {
+            background: url([[${headimag}]]) 0px 0px / contain no-repeat fixed;
+            padding-top: 27%;
+            height: 0;
+            /*position: relative;*/
+            /*top: -80px;*/
+            z-index: 50;
+        }
+        header {
+            height: 75px;
+            background: rgba(0, 0, 0, 0.8);
+            margin: 0 auto;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+        .main {
+            margin: 0 auto;
+        }
+
+        .breadcrumb {
+            border-bottom: 1px solid #dcdcdc;
+            min-height: 40px;
+            width: 80%;
+            margin: 36px auto;
+            background-color: #fff;
+        }
+        .breadcrumb a {
+            color: #999;
+            text-decoration: none;
+
+        }
+        .container {
+            width: 80%;
+            /*height: 1000px;*/
+            margin: 20px auto;
+            /*background-color: rebeccapurple;*/
+        }
+        .state-column {
+            width: 33.33333333%;
+            float: left;
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+
+        .clearfix:after{/*伪元素是行内元素 正常浏览器清除浮动方法*/
+            content: "";
+            display: block;
+            height: 0;
+            clear:both;
+            visibility: hidden;
+        }
+        .clearfix {
+            *zoom: 1; /*ie6清除浮动的方式 *号只有IE6-IE7执行，其他浏览器不执行*/
+        }
+        .pic {
+            position: relative;
+        }
+        .date {
+            position: absolute;
+        }
+        .state-column p {
+            text-align: center;
+            line-height: 24px;
+            padding: 20px 0;
+            background: #f5f5f5;
+            margin: 0 0 10px;
+            color: #666;
+        }
+
+        .col-md-12  {
+            padding: 15px 0;
+            border-top: 1px solid #E5E5E6;
+            /* display: none; */
+        }
+        .pull-left {
+            float: left !important;
+        }
+        .newslist .info .title {
+            font-size: 20px;
+            line-height: 20px;
+            height: 20px;
+            overflow: hidden;
+            margin: 16px 0;
+            font-weight: bold;
+            color: #666;
+        }
+        .newslist .data {
+            width: 120px;
+            height: 120px;
+            background: #f5f5f5;
+            font-family: Arial;
+            padding: 14px 0;
+        }
+        .newslist .data .day {
+            font-size: 64px;
+            color: #8291C1;
+            text-align: center;
+            font-weight: bold;
+            line-height: 70px;
+        }
+        .newslist .data .year-mouth {
+            text-align: center;
+            color: #666;
+        }
+        .newslist .info {
+            /*width: 1020px;*/
+            padding-left: 40px;
+        }
+    </style>
+</head>
+<body>
+<header th:include="~{publicEN::head1}"></header>
+
+<div class="main">
+    <div class="headimg"></div>
+
+    <div class=" breadcrumb">
+        <a href="/en/index">HOME</a>&gt;<a class="active">NEWS</a>
+    </div>
+
+    <div class="container">
+        <h2 th:text="${title}" style="text-align: center"></h2>
+        <div style="text-align: center;margin: 30px">
+            <span style="margin-right: 50px" th:text="${author}"></span>
+            <span style="margin-left: 50px" th:text="${dateTime}"></span>
+        </div>
+        <div th:utext="${content}"></div>
+    </div>
+</div>
+
+<footer th:include="~{publicEN::footer}"></footer>
+
+<script th:src="@{~/libs/anime/anime.min.js}"></script>
+<script th:src="@{~/libs/glide/glide.min.js}"></script>
+<script th:src="@{~/libs/isotope/isotope.pkgd.min.js}"></script>
+<script th:src="@{~/libs/smooth-scroll/smooth-scroll.polyfills.min.js}"></script>
+<script th:src="@{~/index1.js}"></script>
+</body>
+</html>

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" th:attr="content=${description}">
+    <meta name="keywords" th:attr="content=${keywords}">
+    <title th:text="${title}">春江鞋业|chunjiangshoes</title>
+    <link rel="icon" th:href="@{${iconUrl}}" type="image/x-icon">
+    <link rel="shortcut icon" th:href="@{${iconUrl}}" type="image/x-icon">
+    <script th:src="@{~/libs/scrollReveal/scrollreveal.min.js}"></script>
+    <link
+            rel="stylesheet"
+            href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css"
+    />
+    <link rel="stylesheet" th:href="@{~/css/base.css}">
+    <link rel="stylesheet" th:href="@{~/css/bootstrap/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{~/libs/glide/glide.core.min.css}" />
+    <link rel="stylesheet" th:href="@{~/libs/glide/glide.theme.min.css}" />
+    <link rel="stylesheet" th:href="@{~/style.css}" />
+
+    <style th:inline="css">
+        .headimg {
+            background: url([[${headimag}]]) 0px 0px / contain no-repeat fixed;
+            padding-top: 27%;
+            height: 0;
+            /*position: relative;*/
+            /*top: -80px;*/
+            z-index: 50;
+        }
+        header {
+            height: 75px;
+            background: rgba(0, 0, 0, 0.8);
+            margin: 0 auto;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+        .main {
+            margin: 0 auto;
+        }
+
+        .breadcrumb {
+            border-bottom: 1px solid #dcdcdc;
+            min-height: 40px;
+            width: 80%;
+            margin: 36px auto;
+            background: #fff;
+            z-index: 999;
+            color: #999;
+            font-size: 16px;
+            height: 60px;
+        }
+        .breadcrumb a {
+            color: #999;
+            text-decoration: none;
+
+        }
+        .container {
+            width: 80%;
+            /*height: 1000px;*/
+            margin: 20px auto;
+            /*background-color: rebeccapurple;*/
+        }
+        .breadcrumb .container {
+            width: 100%;
+        }
+
+        .clearfix:after{/*伪元素是行内元素 正常浏览器清除浮动方法*/
+            content: "";
+            display: block;
+            height: 0;
+            clear:both;
+            visibility: hidden;
+        }
+        .clearfix {
+            *zoom: 1; /*ie6清除浮动的方式 *号只有IE6-IE7执行，其他浏览器不执行*/
+        }
+        .state-column p {
+            text-align: center;
+            line-height: 24px;
+            padding: 20px 0;
+            background: #f5f5f5;
+            margin: 0 0 10px;
+            color: #666;
+        }
+
+        .pull-left {
+            float: left !important;
+        }
+        .newslist .info .title {
+            font-size: 20px;
+            line-height: 20px;
+            height: 20px;
+            overflow: hidden;
+            margin: 16px 0;
+            font-weight: bold;
+            color: #666;
+        }
+        .newslist .info {
+            /*width: 1020px;*/
+            padding-left: 40px;
+        }
+        .pull-right {
+            float: right !important;
+        }
+        /*ul {*/
+        /*    display: block;*/
+        /*    list-style-type: disc;*/
+        /*    margin-block-start: 1em;*/
+        /*    margin-block-end: 1em;*/
+        /*    margin-inline-start: 0px;*/
+        /*    margin-inline-end: 0px;*/
+        /*    padding-inline-start: 40px;*/
+        /*}*/
+        ul li {
+            list-style: none;
+            float: left;
+            margin-left: 60px;
+            padding-bottom: 12px;
+            cursor: pointer;
+            display: list-item;
+            text-align: -webkit-match-parent;
+        }
+        .maintitle_inside {
+            font-size: 30px;
+            line-height: 30px;
+            color: #000;
+        }
+        .maintitle_inside .border {
+            width: 30px;
+            margin: 35px 0px 30px 0px;
+            border-bottom: 4px solid #8291c1;
+        }
+        .maintitle {
+            font-size: 30px;
+            color: #000;
+            text-align: center;
+        }
+        .hx_list .row p {
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 0px;
+            line-height: 26px;
+        }
+        p {
+            margin: 0 0 10px;
+        }
+        .hx_list .row .img img {
+            display: block;
+            margin: 0 auto;
+            vertical-align: middle;
+            width: auto;
+        }
+        .hx_list .row .img {
+            height: 80px;
+            line-height: 80px;
+        }
+        .develop .info {
+            width: 400px;
+            position: absolute;
+            left: 147px;
+            top: 145px;
+            color: #333333;
+            font-size: 14px;
+        }
+        .develop .info .title {
+            font-size: 30px;
+        }
+        .develop {
+            position: relative;
+        }
+        .develop .info .text {
+            line-height: 28px;
+            margin: 20px 0;
+            color: #666;
+        }
+        .struc {
+            width: 40%;
+            margin: 0 auto;
+        }
+        .develop .info .btn {
+            display: inline-block;
+            color: #8291c1;
+            background: #fff;
+            border-color: #fff;
+            border-radius: 20px;
+            display: table;
+            padding: 10px 40px;
+            cursor: pointer;
+        }
+        .develop.develop_w .info {
+            color: #666;
+            right: 120px;
+            left: auto;
+            text-align: right;
+        }
+        footer ul li {
+            margin-left: 0;
+            float: none;
+        }
+        @media screen and (max-width: 1024px){
+            .pull-right {
+                display: none;
+            }
+            .develop .info {
+                width: auto;
+            }
+        }
+        .media-body .btn {
+            display: inline-block;
+            color: #8291c1;
+            background: #E5E5E7;
+            border-color: #fff;
+            border-radius: 20px;
+            display: table;
+            padding: 10px 40px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<header th:include="~{publicEN::head1}"></header>
+
+<div class="main">
+    <div class="headimg"></div>
+
+    <div class=" breadcrumb">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="pull-left"><a href="/en/index">HOME</a>&gt;<a class="active">ABOUT US</a></div>
+                    <div class="pull-right">
+                        <ul class="breadnav clearfix">
+                            <li class="active">
+                                <a href="#about">ABOUT US</a>
+                                <div class="border"></div>
+                            </li>
+                            <li class="">
+                                <a href="#values">VALUES</a>
+                                <div class="border"></div>
+                            </li>
+                            <li>
+                                <a href="#history">HISTORY</a>
+                                <div class="border"></div>
+                            </li>
+                            <li>
+                                <a href="#structure">STRUCTURE</a>
+                                <div class="border"></div>
+                            </li>
+                            <li>
+                                <a href="#qc">QUALIFICATION CERTIFICATION</a>
+                                <div class="border"></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="dszjs" name="dszjs" class="snav0 pd_50">
+        <div class="container">
+            <div class="row dszjs">
+                <div class="col-md-12">
+                    <div class="media">
+                        <!-- <div class="media-left">
+                            <div class="row pd_b_m">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                                                    <img class="media-object" src="http://www.zijiang.com/sites/default/files/11111.jpg">
+                                </div>
+                            </div>
+                        </div> -->
+                        <div class="media-body media-middle">
+                            <div id="about" class="maintitle_inside">
+                                ABOUT US
+                                <div class="border"></div>
+                            </div>
+                            <div class="txt">
+                                <p th:text="${intro}">临沂春江鞋业有限公司成立于2004年9月，位于山东省沂南县北外环路东段，占地100亩，是一家专业研发和生产安全鞋、工作鞋和户外鞋的公司。公司下有三个子公司临沂春雨鞋业有限公司、山东赛尔斯鞋业有限公司和临沂春天进出口有限公司。</p>
+                            </div>
+                            <a class="btn" th:href="@{/en/intro}">More</a>
+                            <!-- <div class="txt">
+                                <p>紫江集团的投资领域以制造业和服务业两大板块为主。制造业领域，拥有两家上市公司—紫江企业股份和威尔泰股份；服务业领域，主要从事紫竹国家级高新技术开发区、房地产及酒店等的开发与管理。</p>
+                            </div>
+                            <div class="txt">
+                                <p>紫江在自身发展的同时，还以“产业报国、科教兴国”为己任，重视经济效益和社会效益的共同发展，未来将在上海建设具有全球科创中心中发挥更积极作用。</p>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="hxjzg" name="hxjzg" class="snav1 pd_50">
+        <div id="values" class="maintitle" th:text="${introItems.bigtitle}">
+            核心价值观
+            <div class="border"></div>
+        </div>
+        <div class="hx_list">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4 col-md-4">
+                        <div class="img"><img th:src="@{~/img/aboutus_2.png}"></div>
+                        <p><span th:text="${introItems.smalltitle1}">愿景</span><br><span th:text="${introItems.desc1}">打造成为最受尊敬企业</span></p>
+                    </div>
+                    <div class="col-sm-4 col-md-4">
+                        <div class="img"><img th:src="@{~/img/aboutus_3.png}"></div>
+                        <p><span th:text="${introItems.smalltitle2}">价值观</span><br><span th:text="${introItems.desc2}">专注、简单、持久、执著</span></p>
+                    </div>
+                    <div class="col-sm-4 col-md-4">
+                        <div class="img"><img th:src="@{~/img/aboutus_4.png}"></div>
+                        <p><span th:text="${introItems.smalltitle3}">座右铭</span><br><span th:text="${introItems.desc3}">清清白白做人，兢兢业业做事。</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="fzlc" name="fzlc" class="snav2 develop container-flud bannerstyle" style="background: url(&quot;http://www.zijiang.com/sites/default/files/fzlc_0.jpg&quot;) 0px 0px / cover no-repeat fixed; padding-top: 243.5px; padding-bottom: 243.5px; height: 487px;position: relative">
+
+        <div id="history" class="info">
+            <div class="title">
+                History
+                <div class="border"></div>
+            </div>
+            <div class="text" th:text="${history}">从创立至今，春江已走过三十多年的创业历程。</div>
+            <a class="btn" th:href="@{/en/history}">More</a>
+        </div>
+    </div>
+
+    <div id="zzjg" name="dszjs" class="snav0 pd_50">
+        <div id="structure" class="container">
+            <div class="row dszjs">
+                <div class="col-md-12">
+                    <div class="media">
+                        <!-- <div class="media-left">
+                            <div class="row pd_b_m">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                                                    <img class="media-object" src="http://www.zijiang.com/sites/default/files/11111.jpg">
+                                </div>
+                            </div>
+                        </div> -->
+                        <div class="media-body media-middle">
+                            <div class="maintitle_inside">
+                                Structure
+                                <div class="border"></div>
+                            </div>
+                            <div class="txt">
+                                <p th:text="${structure}">公司下有三个子公司临沂春雨鞋业有限公司、山东赛尔斯鞋业有限公司和临沂春天进出口有限公司。</p>
+                            </div>
+                            <div class="struc">
+                                <img th:src="@{~/img/structrue.jpg}">
+                            </div>
+                            <div style="clear: both;"></div>
+                            <!-- <div class="txt">
+                                <p>紫江集团的投资领域以制造业和服务业两大板块为主。制造业领域，拥有两家上市公司—紫江企业股份和威尔泰股份；服务业领域，主要从事紫竹国家级高新技术开发区、房地产及酒店等的开发与管理。</p>
+                            </div>
+                            <div class="txt">
+                                <p>紫江在自身发展的同时，还以“产业报国、科教兴国”为己任，重视经济效益和社会效益的共同发展，未来将在上海建设具有全球科创中心中发挥更积极作用。</p>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="shzr" name="shzr" class="snav4 develop container-fuild bannerstyle develop_w" style="background: url(&quot;http://www.zijiang.com/sites/default/files/suie.jpg&quot;) 0px 0px / cover no-repeat fixed; padding-top: 243.5px; padding-bottom: 243.5px; height: 487px;">
+
+        <div id="qc" class="info">
+            <div class="title">
+                Qualification Certification
+                <div class="border"></div>
+            </div>
+            <div class="text" th:text="${cert}">公司已通过ISO9001:2008国际质量体系认证，也通过了欧洲BSCI及美国沃尔玛公司验厂；产品通过欧洲 EN ISO 20345：2011标准和澳洲AS/NZS2210.3:2000标准，获得CE、AS/NZS等各类标准证书百余本份。</div>
+            <a class="btn" th:href="@{/en/cert}" onclick="_hmt.push(['_trackEvent', '查看社会责任', '点击']);">More</a>
+        </div>
+    </div>
+
+</div>
+
+<footer th:include="~{publicEN::footer}"></footer>
+<script th:src="@{~/libs/anime/anime.min.js}"></script>
+<script th:src="@{~/libs/glide/glide.min.js}"></script>
+<script th:src="@{~/libs/isotope/isotope.pkgd.min.js}"></script>
+<script th:src="@{~/libs/smooth-scroll/smooth-scroll.polyfills.min.js}"></script>
+<script th:src="@{~/index1.js}"></script>
+</body>
+</html>

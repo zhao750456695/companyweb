@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+</head>
+<body>
+<header th:fragment="head1">
+    <div class="logo">CHUNJIANG</div>
+    <nav>
+        <a href="/en/index">HOME</a>
+        <a href="/en/aboutus">ABOUT US</a>
+        <a href="/en/news">NEWS</a>
+        <a href="/en/product">PRODUCT</a>
+        <a href="/en/tech">TECHNOLOGY</a>
+        <a href="/en/contactus">CONTACT US</a>
+        <span><a style="margin-right: 0" href="/index">中文</a></span>
+        <span style="color: white">/</span>
+        <span><a style="margin-left: 0" href="/en/index">EN</a></span>
+    </nav>
+    <div class="burger">
+        <div class="burger-line1"></div>
+        <div class="burger-line2"></div>
+        <div class="burger-line3"></div>
+    </div>
+</header>
+<footer th:fragment="footer">
+    <div class="footer-menus">
+        <div class="contact-us">
+            <p class="mene-title">CONTACT US</p>
+            <p>Add：North Outer Ring Road, Yinan, Shandong,China</p>
+            <p>Tel：0086-539-3261558</p>
+            <p>Fax：0086-539-3261559</p>
+            <p>Email：lin@chunjiangshoes.com;Ly-cj@126.com</p>
+        </div>
+        <div class="service-menu footer-menu">
+            <p class="menu-title">PRODUCT</p>
+            <ul class="menu-items">
+                <li><a href="#">SAFETY FOOTWEAR</a></li>
+                <li><a href="#">WORK FOOTWEAR</a></li>
+                <li><a href="#">OUTDOOR FOOTWEAR</a></li>
+            </ul>
+        </div>
+        <div class="service-menu footer-menu">
+            <p class="menu-title">TECHNOLOGY</p>
+            <ul class="menu-items">
+                <li><a href="#">MATERIALS</a></li>
+                <li><a href="#">TECH SPECS</a></li>
+                <li><a href="#">TESTING EQUIPMENTS</a></li>
+            </ul>
+        </div>
+        <div class="service-menu footer-menu">
+            <p class="menu-title">NEWS</p>
+            <ul class="menu-items">
+                <li><a href="#">NEWS</a></li>
+            </ul>
+        </div>
+        <div class="service-menu footer-menu">
+            <p class="menu-title">SUPPORT</p>
+            <ul class="menu-items">
+                <li><a href="#">HELP CENTER</a></li>
+                <li><a href="#">CUSTOMER SERVICE</a></li>
+            </ul>
+        </div>
+<!--        <p class="icp-info"><a href="http://www.beian.miit.gov.cn/">鲁ICP备18021651号-2</a></p>-->
+        <p class="rights">2020 CHUNJIANG </p>
+        <div class="scrollToTop">
+            <a href="#" class="fas fa-chevron-up"></a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
+

@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" th:attr="content=${description}">
+    <meta name="keywords" th:attr="content=${keywords}">
+    <title th:text="${title}">春江鞋业|chunjiangshoes</title>
+    <link rel="icon" th:href="@{${iconUrl}}" type="image/x-icon">
+    <link rel="shortcut icon" th:href="@{${iconUrl}}" type="image/x-icon">
+    <script th:src="@{~/libs/scrollReveal/scrollreveal.min.js}"></script>
+    <link
+            rel="stylesheet"
+            href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css"
+    />
+    <link rel="stylesheet"th:href="@{~/css/base.css}">
+    <link rel="stylesheet" th:href="@{~/css/bootstrap/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{~/libs/glide/glide.core.min.css}" />
+    <link rel="stylesheet" th:href="@{~/libs/glide/glide.theme.min.css}" />
+
+    <meta name="applicable-device" content="pc,mobile">
+    <link href="new/css/bootstrap.css" rel="stylesheet">
+    <link href="new/css/bxslider.css" rel="stylesheet">
+    <link href="new/css/style.css" rel="stylesheet">
+    <link
+            rel="stylesheet"
+            href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css"
+    />
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+    <script src="new/js/jquery.min.js"></script>
+    <script src="new/js/bxslider.min.js"></script>
+    <script src="new/js/common.js"></script>
+    <script src="new/js/bootstrap.js"></script>
+    <!--[if lt IE 9]>
+    <script src="new/js/html5shiv.min.js"></script>
+    <script src="new/js/respond.min.js"></script><![endif]-->
+
+
+    <style th:inline="css">
+        .headimg {
+            background: url([[${headimag}]]) 0px 0px / contain no-repeat fixed;
+            padding-top: 27%;
+            height: 0;
+            /*position: relative;*/
+            /*top: -80px;*/
+            z-index: 50;
+        }
+
+        .main {
+            margin: 0 auto;
+        }
+
+        .breadcrumb {
+            border-bottom: 1px solid #dcdcdc;
+            min-height: 40px;
+            width: 80%;
+            margin: 36px auto;
+            background-color: #fff;
+        }
+        .breadcrumb a {
+            color: #999;
+            text-decoration: none;
+        }
+
+        .state-column {
+            width: 33.33333333%;
+            float: left;
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+
+        .clearfix:after{/*伪元素是行内元素 正常浏览器清除浮动方法*/
+            content: "";
+            display: block;
+            height: 0;
+            clear:both;
+            visibility: hidden;
+        }
+        .clearfix {
+            *zoom: 1; /*ie6清除浮动的方式 *号只有IE6-IE7执行，其他浏览器不执行*/
+        }
+        .pic {
+            position: relative;
+        }
+        .date {
+            position: absolute;
+        }
+        .state-column p {
+            text-align: center;
+            line-height: 24px;
+            padding: 20px 0;
+            background: #f5f5f5;
+            margin: 0 0 10px;
+            color: #666;
+        }
+
+        .col-md-12  {
+            padding: 15px 0;
+            border-top: 1px solid #E5E5E6;
+            /* display: none; */
+        }
+        .pull-left {
+            float: left !important;
+        }
+        .newslist .info .title {
+            font-size: 20px;
+            line-height: 20px;
+            height: 20px;
+            overflow: hidden;
+            margin: 16px 0;
+            font-weight: bold;
+            color: #666;
+        }
+        .newslist .data {
+            width: 120px;
+            height: 120px;
+            background: #f5f5f5;
+            font-family: Arial;
+            padding: 14px 0;
+        }
+        .newslist .data .day {
+            font-size: 64px;
+            color: #af0000;
+            text-align: center;
+            font-weight: bold;
+            line-height: 70px;
+        }
+        .newslist .data .year-mouth {
+            text-align: center;
+            color: #666;
+        }
+        .newslist .info {
+            /*width: 1020px;*/
+            padding-left: 40px;
+        }
+        .more {
+            width: 100%;
+            height: 70px;
+            background: #f5f5f5;
+            padding-top: 24px;
+            cursor: pointer;
+        }
+        .more img {
+            margin: 0 auto;
+            display: block;
+            width: auto;
+        }
+
+        .pic .date {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            left: 30px;
+            top: 0;
+            background: #af0000;
+            z-index: 99;
+        }
+        .pic .day, .pic .mouth {
+            font-size: 16px;
+            color: #fff;
+            text-align: center;
+            font-weight: bold;
+            line-height: 26px;
+            margin-top: 3px;
+        }
+        .pic .mouth {
+            font-size: 8px;
+            margin-top: 0px;
+        }
+
+        .state-column img{
+            width: 100%;
+        }
+
+        .swiper-container0 {
+            width: 400px;
+            height: 300px;
+        }
+
+        .swiper-container0 .swiper-slide {
+            background-position: center;
+            background-size: cover;
+        }
+
+        .swiper-container1 {
+            width: 100%;
+            padding:36px 0;
+            margin-left: auto;
+            margin-right: auto;
+
+        }
+        .swiper-container1 .swiper-slide {
+            background-position: center;
+            background-size: cover;
+            height: 200px;
+        }
+
+        #container1{
+            /*地图(容器)显示大小*/
+            width:250px;
+            height:250px;
+        }
+
+        /*分页器颜色*/
+
+        .swiper-pagination-bullet-active {
+            background-color: #740000
+        }
+
+         /*swiper 持续匀速旋转*/
+        .swiper-container1 .swiper-wrapper{
+            -webkit-transition-timing-function: linear; /*之前是ease-out*/
+            -moz-transition-timing-function: linear;
+            -ms-transition-timing-function: linear;
+            -o-transition-timing-function: linear;
+            transition-timing-function: linear;
+        }
+    </style>
+</head>
+<body>
+<header th:include="~{publicZH::head1}"></header>
+
+<div class="page_bg" style="background: url(http://www.js-dw.com/static/upload/image/20200630/1593502308298595.jpg) center center;"></div>
+
+<div class="main">
+
+    <div class=" breadcrumb">
+        <a href="/index">首页</a>&gt;<a class="active">公司动态</a>
+    </div>
+
+
+    <div class="container" id="exb">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12" style="border-top: none">
+                <div class="">
+                    <h2 style="
+                    text-align: center;
+                    font-weight: bold;
+                    margin-bottom: 8px;
+                    color: black;">展会风采</h2>
+                    <div style="
+                    text-align: center;
+                    margin-bottom: 16px;
+                ">- EXHIBITION -</div>
+
+                    <div class="col-12 col-lg-6">
+                        <!-- Swiper -->
+                        <div class="swiper-container swiper-container0">
+                            <div class="swiper-wrapper">
+                                <div th:each="cert,iterStat:${showImages}"  class="swiper-slide" th:style="'background-image:url(' + ${cert.url} + ')'"></div>
+<!--                                <div class="swiper-slide" style="background-image:url(http://www.js-dw.com/static/upload/image/20200626/1593175834512745.jpg)"></div>-->
+<!--                                <div class="swiper-slide" style="background-image:url(http://www.js-dw.com/static/upload/image/20200626/1593175834512745.jpg)"></div>-->
+<!--                                <div class="swiper-slide" style="background-image:url(http://www.js-dw.com/static/upload/image/20200626/1593175834512745.jpg)"></div>-->
+<!--                                <div class="swiper-slide" style="background-image:url(http://www.js-dw.com/static/upload/image/20200626/1593175834512745.jpg)"></div>-->
+<!--                                <div class="swiper-slide" style="background-image:url(http://www.js-dw.com/static/upload/image/20200626/1593175834512745.jpg)"></div>-->
+                            </div>
+                            <!-- Add Pagination -->
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+<!--                    <span class="abtusa">-->
+<!--                        <a title="临沂春江" href="#" class="a1">2021-08-08</a>-->
+<!--                        <a title="临沂春江" href="#" class="a2">中国 上海</a>-->
+<!--                    </span>-->
+                        <p><strong style="color:#af0000; font-size: 3rem;">春江最新展会</strong></p>
+                        <p><strong style=" color:#000000; font-size: 1.5rem;">THE LATEST EXHIBITION</strong></p>
+                        <p class="about_contents" th:text="${show.descri}"> 核心价值观：诚信、创新、服务 企业核心： 诚信? 企业精神： 团结拼搏、开拓求实、满足用户、科技进步。 ?
+                            客户：为客户提供高质量和最大价值的专业化产品和服务，以真诚和实力赢得客户的理解、尊重和支持。 市场：为客户降低采购成本和风险，为客户投资提供切实保障。?
+                            ... </p>
+                        <a th:href="@{/exb_detail(id=${show.id})}" class="about_more" style="
+                        margin-bottom: 8px;
+                    ">查看详细 &gt;&gt;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h2 class="about_h2" style="color:#ff434f;">历届风采</h2>
+        <span class="about_span">EXHIBITION ALBUM</span>
+        <div>
+            <!-- Swiper -->
+            <div class="swiper-container swiper-container1">
+                <div class="swiper-wrapper">
+                    <div th:each="cert,iterStat:${pastShowImages}"  class="swiper-slide" th:style="'background-image:url(' + ${cert.url} + ')'"></div>
+<!--                    <div class="swiper-slide" style="background-image:url(http://www.js-dw.com/static/upload/image/20200626/1593175834512745.jpg)"></div>-->
+<!-- -                    <div class="swiper-slide" style="background-image:url(http://www.js-dw.com/static/upload/image/20200626/1593175834512745.jpg)"></div>-->
+<!--                    <div class="swiper-slide" style="background-image:url(http://www.js-dw.com/static/upload/image/20200626/1593175834512745.jpg)"></div>-->
+<!--                    <div class="swiper-slide" style="background-image:url(http://www.js-dw.com/static/upload/image/20200626/1593175834512745.jpg)"></div>-->
+<!--                    <div class="swiper-slide" style="background-image:url(http://www.js-dw.com/static/upload/image/20200626/1593175834512745.jpg)"></div>-->
+<!--                    <div class="swiper-slide" style="background-image:url(http://www.js-dw.com/static/upload/image/20200626/1593175834512745.jpg)"></div>-->
+<!--                    <div class="swiper-slide" style="background-image:url(http://www.js-dw.com/static/upload/image/20200626/1593175834512745.jpg)"></div>-->
+<!--                    <div class="swiper-slide" style="background-image:url(http://www.js-dw.com/static/upload/image/20200626/1593175834512745.jpg)"></div>-->
+<!--                    <div class="swiper-slide" style="background-image:url(http://www.js-dw.com/static/upload/image/20200626/1593175834512745.jpg)"></div>-->
+<!--                    <div class="swiper-slide" style="background-image:url(http://www.js-dw.com/static/upload/image/20200626/1593175834512745.jpg)"></div>-->
+
+                </div>
+
+            </div>
+            <div>
+                <a href="/exbs" class="about_more" style="
+                       margin: auto;
+                        margin-bottom: 8px;
+                       font-size: 16px;
+                       font-weight: bold;
+                       display: block;
+                       width: 150px;
+                    ">查看全部展会 &gt;&gt;</a>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="container" style="margin-top: 36px;" id="cjnews">
+        <h2 style="
+                    text-align: center;
+                    font-weight: bold;
+                    margin-bottom: 8px;
+                    color: black;">春江新闻</h2>
+        <div style="
+                    text-align: center;
+                    margin-bottom: 16px;
+                ">- NEWS -</div>
+        <div class="state clearfix">
+            <div th:each="news,stat: ${newsList}">
+                <a class="state-column" th:href="@{/newsDetail(id=${news.id})}">
+                    <div class="pic">
+                        <div class="date">
+                            <div class="day" th:text="${news.day}">16</div>
+                            <div class="mouth" th:text="${news.yearMonth}">Feb.16</div>
+                        </div>
+                        <img th:src="@{${news.cover}}">
+                    </div>
+                    <p th:text="${news.title}">春江鞋业xxxxxx</p>
+                </a>
+            </div>
+        </div>
+        <div class="newslist">
+            <div class="col-md-12 clearfix">
+                <a href="/node/596">
+                    <div class="data pull-left">
+                        <div class="day">1</div>
+                        <div class="year-mouth">2021-4</div>
+                    </div>
+                    <div class="info pull-left">
+                        <div class="title">春江鞋业xxxxxx</div>
+                        <div class="detail"></div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-12 clearfix">
+                <a href="/node/596">
+                    <div class="data pull-left">
+                        <div class="day">1</div>
+                        <div class="year-mouth">2021-4</div>
+                    </div>
+                    <div class="info pull-left">
+                        <div class="title">春江鞋业xxxxxx</div>
+                        <div class="detail"></div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-12 clearfix">
+                <a href="/node/596">
+                    <div class="data pull-left">
+                        <div class="day">1</div>
+                        <div class="year-mouth">2021-4</div>
+                    </div>
+                    <div class="info pull-left">
+                        <div class="title">春江鞋业xxxxxx</div>
+                        <div class="detail"></div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-12 clearfix">
+                <a href="/node/596">
+                    <div class="data pull-left">
+                        <div class="day">1</div>
+                        <div class="year-mouth">2021-4</div>
+                    </div>
+                    <div class="info pull-left">
+                        <div class="title">春江鞋业xxxxxx</div>
+                        <div class="detail"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="row more_ct">
+            <div class="col-md-12">
+                <div class="more" onclick="renderNews()"  th:if="${more}">
+                    <img th:src="@{~/img/zk_icon.png}" alt="" class="anniu">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom footer_nav">
+    <div class="foot_nav btn-group dropup"><a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                                              aria-expanded="false" href="javascript:;"><span
+            class="glyphicon glyphicon-share btn-lg" aria-hidden="true"></span> 分享</a>
+
+    </div>
+    <div class="foot_nav"><a href="javascript:;"><span class="glyphicon glyphicon-phone btn-lg"
+                                                       aria-hidden="true"></span>手机</a></div>
+    <div class="foot_nav">
+        <button id="foot_btn" type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                aria-controls="navbar">
+            <a id="gotocate" href="javascript:;"><span class="glyphicon glyphicon-th-list btn-lg"></span> 分类 </a>
+        </button>
+    </div>
+
+    <div class="foot_nav"><a id="gototop" href="javascript:;"><span class="glyphicon glyphicon-circle-arrow-up btn-lg"
+                                                                    aria-hidden="true"></span>顶部</a></div>
+</nav>
+<footer th:include="~{publicZH::footer1}"></footer>
+
+<script type="text/javascript" th:src="@{~/js/jquery-3.4.1.min.js}"></script>t>
+<script th:src="@{~/libs/glide/glide.min.js}"></script>
+<script th:src="@{~/libs/isotope/isotope.pkgd.min.js}"></script>
+<script th:src="@{~/libs/smooth-scroll/smooth-scroll.polyfills.min.js}"></script>
+<!--<script th:src="@{~/index1.js}"></script>-->
+<script src="js/swiper-bundle.min.js"></script>
+<script src="https://map.qq.com/api/gljs?v=1.exp&key=ULXBZ-MTXKD-LEN4G-PVOYH-RGD72-3OBS6"></script>
+
+<script type="text/javascript" th:inline="javascript">
+    /*<![CDATA[*/
+
+    window.onload = initMap
+    //地图初始化函数，本例取名为init，开发者可根据实际情况定义
+    function initMap() {
+        //定义地图中心点坐标
+        var center = new TMap.LatLng(35.562343,118.485432)
+        //定义map变量，调用 TMap.Map() 构造函数创建地图
+        var map = new TMap.Map(document.getElementById('container1'), {
+            center: center,//设置地图中心点坐标
+            zoom: 17,   //设置地图缩放级别
+            pitch: 43.5,  //设置俯仰角
+            rotation: 45    //设置地图旋转角度
+        });
+
+        //创建并初始化MultiMarker
+        var markerLayer = new TMap.MultiMarker({
+            map: map,  //指定地图容器
+            //样式定义
+            styles: {
+                //创建一个styleId为"myStyle"的样式（styles的子属性名即为styleId）
+                "myStyle": new TMap.MarkerStyle({
+                    "width": 25,  // 点标记样式宽度（像素）
+                    "height": 35, // 点标记样式高度（像素）
+                    "src": 'favicon.ico',  //图片路径
+                    //焦点在图片中的像素位置，一般大头针类似形式的图片以针尖位置做为焦点，圆形点以圆心位置为焦点
+                    "anchor": { x: 16, y: 32 }
+                })
+            },
+            //点标记数据数组
+            geometries: [{
+                "id": "1",   //点标记唯一标识，后续如果有删除、修改位置等操作，都需要此id
+                "styleId": 'myStyle',  //指定样式id
+                "position": new TMap.LatLng(35.561536,118.485778),  //点标记坐标位置
+                "properties": {//自定义属性
+                    "title": "春江鞋业"
+                }
+            }
+            ]
+        });
+    }
+
+    var newsHtml = ""
+    var pageIndex = 1
+    function renderNews() {
+        // alert("hello")
+        $.ajax({
+            type: 'post',
+            url: [[@{/api/news}]],
+            dateType:'json',
+            data: {
+                'page': pageIndex
+        },
+        cache: false,
+            async: true,
+            success: function (data) {
+            console.log('data', data)
+            console.log(data.news)
+            if (data.news != undefined) {
+                for (let i=0; i<data.news.length; i++) {
+                    newsHtml += `<div class="col-md-12 clearfix">
+                <a href=http://`+ window.location.host +`/newsDetail?id=`+ data.news[i].id +`>
+                    <div class="data pull-left">
+                        <div class="day">`+ data.news[i].day +`</div>
+                        <div class="year-mouth">` + data.news[i].yearMonth + `</div>
+                    </div>
+                    <div class="info pull-left">
+                        <div class="title">`+ data.news[i].title +`</div>
+                        <div class="detail"></div>
+                    </div>
+                </a>
+                </div>`
+                }
+            }
+
+            $(".newslist").html(newsHtml)
+        }
+    })
+        pageIndex += 1
+    }
+
+
+    $(document).ready(function () {
+        renderNews()
+    });
+
+    var swiper = new Swiper('.swiper-container0', {
+        effect: 'cube',
+        grabCursor: true,
+        cubeEffect: {
+            shadow: true,
+            slideShadows: true,
+            shadowOffset: 20,
+            shadowScale: 0.94,
+        },
+        autoplay:true,
+        loop:true,
+        pagination: {
+            el: '.swiper-pagination',
+        },
+    });
+
+
+
+
+    var swiper = new Swiper('.swiper-container1', {
+        slidesPerView: 1,
+        spaceBetween: 40,
+        speed:3000,//匀速时间
+        autoplay: {
+            delay: 0,
+            stopOnLastSlide: false,
+            disableOnInteraction: false,
+        },
+        loop: true,
+        breakpoints: {
+            320: {  //当屏幕宽度大于等于320
+                slidesPerView: 1,
+                spaceBetween: 10
+            },
+            768: {  //当屏幕宽度大于等于768
+                slidesPerView: 3,
+                spaceBetween: 20
+            },
+            1280: {  //当屏幕宽度大于等于1280
+                slidesPerView: 4,
+                spaceBetween: 30
+            }
+        }
+    });
+
+
+
+    /*]]>*/
+</script>
+
+</body>
+</html>

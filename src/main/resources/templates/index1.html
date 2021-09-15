@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="author" content="wedoTech"/>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <title th:text="${title}">index</title>
+    <meta name="description"
+          th:content="${description}"/>
+    <meta name="keywords" th:content="${keywords}"/>
+    <meta name="applicable-device" content="pc,mobile">
+    <link rel="icon" th:href="@{${iconUrl}}" type="image/x-icon" />
+    <link rel="shortcut icon" th:href="@{${iconUrl}}" type="image/x-icon"/>
+
+    <link href="new/css/bootstrap.css" rel="stylesheet">
+    <link href="new/css/bxslider.css" rel="stylesheet">
+    <link href="new/css/style.css" rel="stylesheet">
+    <link
+            rel="stylesheet"
+            href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css"
+    />
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+    <script src="new/js/jquery.min.js"></script>
+    <script src="new/js/bxslider.min.js"></script>
+    <script src="new/js/common.js"></script>
+    <script src="new/js/bootstrap.js"></script>
+    <!--[if lt IE 9]>
+    <script src="new/js/html5shiv.min.js"></script>
+    <script src="new/js/respond.min.js"></script><![endif]-->
+    <style>
+
+        .swiper-container {
+            width: 100%;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        .swiper-slide {
+            background-position: center;
+            background-size: cover;
+            width: 300px;
+            height: 300px;
+
+        }
+        #container1{
+            /*地图(容器)显示大小*/
+            width:250px;
+            height:250px;
+        }
+
+        .swiper-container1 {
+            width: 100%;
+            height: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .swiper-container1 .swiper-slide {
+            text-align: center;
+            height: calc((100% - 30px) / 3);;
+            width: 30%;
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+            overflow: auto;
+        }
+        .activities .activity{
+            width: 100%;
+        }
+        .activities .activity img{
+            width: 100%;
+        }
+        @media screen and (max-width: 1200px) {
+            .abtusa{
+                display: none;
+            }
+        }
+        @media screen and (max-width: 1200px) {
+            .num-section{
+                display: none;
+            }
+        }
+        @media screen and (max-width: 1000px) {
+            .new-section{
+                width: 100%;
+            }
+        }
+        @media screen and (min-width: 1000px) {
+            .new-section{
+                width: 45%;
+                margin-left: 26px;
+            }
+        }
+
+        /*// 修改导航条的隐藏与显示*/
+        @media (min-width: 1200px) {
+            .navbar-toggle {
+                display: none;
+            }
+        }
+        @media (max-width: 1200px) {
+            .collapse {
+                display: none;
+            }
+        }
+
+        .prol .nr {
+            border: 1px #d5d5d5 solid;
+        }
+
+        .prol h4 {
+            height: 75px;
+            line-height: 75px;
+            background: #af0000;
+            text-align: center;
+            letter-spacing: 3px;
+        }
+
+        .prol li a {
+            font-family: "Microsoft YaHei";
+            font-size: 16px;
+            color: #666666;
+            background: url(images/c3.jpg) no-repeat center right;
+            width: 172px;
+            display: block;
+        }
+
+        .prol li a:hover, .prol li.cur a {
+            color: #af0000;
+            background: url(images/c2.jpg) no-repeat center right;
+            font-weight: bold;
+        }
+
+        .prol p {
+            padding-bottom: 4px;
+            /*font-family: :Microsoft YaHei;*/
+            font-size: 14px;
+            /*color: #666666px;*/
+            padding-left: 39px;
+            margin-left: 28px;
+            background: url(images/c4.jpg) no-repeat center left;
+        }
+        .prol li {
+            height: 48px;
+            line-height: 48px;
+            border-bottom: 1px #d5d5d5 solid;
+        }
+        .partner {
+            height: 300px;
+            background: url(images/bj04.jpg) no-repeat center top;
+        }
+        .partner img {
+            width: 170px;
+            height: 90px;
+        }
+        /*分页器颜色*/
+
+
+        /*swiper 持续匀速旋转*/
+        .swiper-container .swiper-wrapper{
+            -webkit-transition-timing-function: linear; /*之前是ease-out*/
+            -moz-transition-timing-function: linear;
+            -ms-transition-timing-function: linear;
+            -o-transition-timing-function: linear;
+            transition-timing-function: linear;
+        }
+
+        .clearfix:before,
+        .clearfix:after{
+            content:"";
+            diaplsy:table;
+        }
+        .clearfix:after{
+            clear:both;
+        }
+
+        /*//IE/6/7*/
+        .clearfix {
+            *zoom:1;
+        }
+
+        .container-fluid {
+            padding-right: 4rem;
+            padding-left: 4rem;
+        }
+
+        tbody tr td:first-child{
+            margin-left: -2.5rem;
+        }
+
+        @media screen and (min-width: 1000px) {
+            .bxslider img{
+                height: 75vh;
+            }
+        }
+        @media screen and (max-width: 1000px) {
+            .bxslider img{
+                height: 35vh;
+            }
+        }
+        .bx-wrapper .bx-pager.bx-default-pager a.active {
+            background: #740000;
+        }
+    </style>
+</head>
+<body>
+
+
+<header th:include="~{publicZH::head1}"></header>
+
+
+
+
+<!-- bxslider -->
+<div class="flash">
+    <ul class="bxslider">
+        <li th:each="bp,iterStat:${list}" ><a href="">
+            <img th:if="${bp.isImg}" th:src="@{${bp.url}}" alt="" />
+            <video th:if="${bp.isVideo}" th:src="@{${bp.url}}" muted autoplay loop></video>
+        </a></li>
+<!--        <li><a href=""><img src="new/images/1-1FQ9151053502.jpg" alt="幻灯二（1663PX*476PX）"/></a></li>-->
+    </ul>
+</div>
+<script type="text/javascript">
+    $('.bxslider').bxSlider({
+        adaptiveHeight: true,
+        infiniteLoop: true,
+        hideControlOnEnd: true,
+        auto: true
+    });
+</script>
+
+
+<div class="container">
+    <div class="row" style="margin-top: 36px;">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="">
+                <h2 style="
+                    text-align: center;
+                    font-weight: bold;
+                    margin-bottom: 8px;
+                    color: black;">走进春江</h2>
+                <span class="abtusa" style="
+                    float: right;
+                    margin-top: -3%;
+                ">
+                        <a title="临沂春江" href="/aboutus#values" class="a1">企业文化</a>
+                        <a title="临沂春江" href="/aboutus#qc" class="a2">荣誉资质</a>
+                        <a title="临沂春江" href="/aboutus#history" class="a3">发展历程</a>
+                        <a href="/fhzg.html" class="a4">组织架构</a>
+                 </span>
+                <div style="
+                    text-align: center;
+                    margin-bottom: 16px;
+                ">- ABOUT US -</div>
+                <div class="col-12 col-lg-6 myleft">
+                    <p><strong style=" color:#740000; font-size: 3rem;" th:text="${bigTitle}">春江——为安全护航</strong></p>
+                    <p><strong style=" color:#000000; font-size: 1.5rem;" th:text="${smallTitle}">SHIELD KING -YOUR SAFETY IS OUR PRIORITY</strong></p>
+                    <p class="about_contents" th:text="${content}"> 核心价值观：诚信、创新、服务 企业核心： 诚信? 企业精神： 团结拼搏、开拓求实、满足用户、科技进步。 ?
+                        客户：为客户提供高质量和最大价值的专业化产品和服务，以真诚和实力赢得客户的理解、尊重和支持。 市场：为客户降低采购成本和风险，为客户投资提供切实保障。?
+                       ... </p>
+                    <a href="/intro" class="about_more" style="
+                        margin-bottom: 8px;
+                    ">查看详细 &gt;&gt;</a>
+                </div>
+                <div class="col-12 col-lg-6 myright">
+                    <img style="width: 100%" align="left" th:src="@{${introimg}}" alt="关于我们">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<section class="data-section num-section" style="margin-top: 18px; width: 100%">
+    <div th:each="item,iterStat:${aboutlist1}" class="data-piece">
+        <i th:if="${item.h1}" class="fas fa-certificate"></i>
+        <div class="num" th:text="${item.h1}">17</div>
+        <div class="data-desc" th:text="${item.h2}">年制鞋经验</div>
+    </div>
+</section>
+
+
+<section id="company-activities" style="margin-top: 36px; width: 100%" class="company-activities container">
+    <h2 style="
+                    text-align: center;
+                    font-weight: bold;
+                    margin-bottom: 8px;
+                    color: black;">春江动态</h2>
+    <div style="
+                    text-align: center;
+                    margin-bottom: 16px;
+                ">- NEWS -</div>
+    <div class="row">
+        <div th:each="news,iterStat:${newsList}" class="new-section activity feature col-12 col-sm-6 col-md-6 col-lg-6">
+            <div class="act-image-wrapper">
+                <img style="width: 100%;" th:src="@{${news.cover}}" alt="">
+            </div>
+            <div class="meta">
+
+
+            </div>
+            <h2 style="padding-left: 24px" class="act-title" th:text="${news.title}">公司成功取得XXX资历认证</h2>
+            <article style="padding-left: 24px" th:text="${news.descri}">
+                春江鞋业的规范生产获得XXX认证
+            </article>
+            <a style="padding-left: 24px" th:href="@{/newsDetail(id=${news.id})}"><button class="read-more-btn">阅读更多</button></a>
+            <p class="date-publish" style="float: right;margin-top: 20px;padding-right: 24px">
+                <i class="far fa-calendar"></i><span th:text="${news.dt}">2020年4月6号</span>
+            </p>
+        </div>
+    </div>
+    <a href="/news#cjnews" class="about_more" style="
+                        margin-bottom: 8px;
+                        margin-top: 38px;
+                    ">全部春江新闻 &gt;&gt;</a>
+</section>
+
+
+
+<div class="container" style="margin-top: 36px">
+    <div class="row">
+
+
+                <h2 style="
+                    text-align: center;
+                    font-weight: bold;
+                    margin-bottom: 8px;
+                    color: black;">产品中心</h2>
+                <div style="
+                    text-align: center;
+                    margin-bottom: 16px;
+                ">- PRODUCT -</div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-3">
+                <div class="prol fl">
+                    <h4>
+                        <a title="劳保鞋" href="/product" style="
+                            color: white;
+                            font-weight: bold;
+                            font-size: 26px;
+                        ">产品系列</a></h4>
+                    <div class="nr" id="procolid">
+                        <ul>
+
+                            <li th:class="'l'+${i.index+1}" th:each="c,i:${productList}"><a href="#" th:text="${c.cat}">
+                                安全鞋</a></li>
+
+<!--                            <li class="l2"><a href="http://www.feiheboots.com/gkx.html">-->
+<!--                                工矿靴</a></li>-->
+
+<!--                            <li class="l3"><a href="http://www.feiheboots.com/jyx.html">-->
+<!--                                绝缘靴</a></li>-->
+
+<!--                            <li class="l4"><a href="http://www.feiheboots.com/fhxxl.html">-->
+<!--                                防化鞋系列</a></li>-->
+                        </ul>
+                        <p>
+                            咨询热线：<i th:text="${hotphone}">181-0385-7665</i></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-9 col-9">
+                <div class="product_list li1" style="display: block">
+                    <div th:each="product,iterStat:${productList1.goodsList}" class="col-sm-4 col-md-3 col-mm-6 product_img service-item"><a th:href="@{/detail(code=${product.getGoodsCode()})}"><img
+                            th:src="@{${product.listImage}}" class="opacity_img" alt="产品名称九"></a>
+                        <p class="product_title"><a th:href="@{/detail(code=${product.getGoodsCode()})}" title="产品名称九" th:text="${product.goodsName}">产品名称</a></p>
+                    </div>
+                </div>
+                <div class="product_list li2" style="display: none">
+                    <div th:each="product,iterStat:${productList2.goodsList}" class="col-sm-4 col-md-3 col-mm-6 product_img service-item"><a th:href="@{/detail(code=${product.getGoodsCode()})}"><img
+                            th:src="@{${product.listImage}}" class="opacity_img" alt="产品名称九"></a>
+                        <p class="product_title"><a th:href="@{/detail(code=${product.getGoodsCode()})}" title="产品名称九" th:text="${product.goodsName}">产品名称</a></p>
+                    </div>
+                </div>
+                <div class="product_list li3" style="display: none">
+                    <div th:each="product,iterStat:${productList3.goodsList}" class="col-sm-4 col-md-3 col-mm-6 product_img service-item"><a th:href="@{/detail(code=${product.getGoodsCode()})}"><img
+                            th:src="@{${product.listImage}}" class="opacity_img" alt="产品名称九"></a>
+                        <p class="product_title"><a th:href="@{/detail(code=${product.getGoodsCode()})}" title="产品名称九" th:text="${product.goodsName}">产品名称</a></p>
+                    </div>
+                </div>
+                <div class="product_list li4" style="display: none">
+                    <div th:each="product,iterStat:${productList4.goodsList}" class="col-sm-4 col-md-3 col-mm-6 product_img service-item"><a th:href="@{/detail(code=${product.getGoodsCode()})}"><img
+                            th:src="@{${product.listImage}}" class="opacity_img" alt="产品名称九"></a>
+                        <p class="product_title"><a th:href="@{/detail(code=${product.getGoodsCode()})}" title="产品名称九" th:text="${product.goodsName}">产品名称</a></p>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+    </div>
+    <div class="row" style="text-align: center; position: relative; top: -46px">
+        <a href="/product" class="about_more" style="
+                        display: inline-block;
+                        margin: auto;
+                        margin-bottom: 8px;
+                        width: 120px;
+                    ">查看全部产品 &gt;&gt;</a>
+    </div>
+
+</div>
+
+<div style="height: 170px; background: url(images/bj06.jpg) no-repeat center top; margin-top: -26px" class="container-fluid">
+
+</div>
+
+
+
+
+
+<div class="container"  style="margin-top: 36px;">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div>
+                <h2 style="
+                    text-align: center;
+                    font-weight: bold;
+                    margin-bottom: 8px;
+                    color: black;">荣誉资质</h2>
+                <div style="
+                    text-align: center;
+                    margin-bottom: 16px;
+                ">- CERTIFICATE -</div>
+                <div class="swiper-container swiper-container0">
+                    <div class="swiper-wrapper">
+                        <div th:each="cert,iterStat:${certs}"  class="swiper-slide" th:style="'background-image:url(' + ${cert.url} + ')'"></div>
+<!--                        <div class="swiper-slide" style="background-image:url(http://www.js-dw.com/static/upload/image/20200628/1593312040528913.jpg)"></div>-->
+
+<!--                        <div class="swiper-slide" style="background-image:url(http://www.js-dw.com/static/upload/image/20200628/1593312005876206.jpg)"></div>-->
+<!--                        <div class="swiper-slide" style="background-image:url(http://www.js-dw.com/static/upload/image/20200626/1593175834512745.jpg)"><span style="background: #0854a8; color: white;position: absolute;bottom: 0;">2021-06-06 山东青岛 春节安全鞋展销会</span></div>-->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="partner">
+    <div class="container" style="margin-top: 36px">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div style="margin-top: 66px;">
+                    <h2 style="
+                    text-align: center;
+                    font-weight: bold;
+                    margin-bottom: 8px;
+                    color: white;">合作伙伴</h2>
+                    <div style="
+                    text-align: center;
+                    color: white;
+                    margin-bottom: 16px;
+                ">- PARTNER -</div>
+                    <div th:each="partner,iterStat:${partners}" class="col-xs-6 col-sm-2 col-md-2">
+                        <img style="width: 100%" th:src="@{${partner.url}}"/>
+                    </div>
+<!--                    <div class="col-xs-6 col-sm-2 col-md-2">-->
+<!--                        <img style="width: 100%" src="http://www.bgxgroup.com/upload/201511/1448001777757.jpg"/>-->
+<!--                    </div>-->
+<!--                    <div class="col-xs-6 col-sm-2 col-md-2">-->
+<!--                        <img style="width: 100%" src="http://www.bgxgroup.com/upload/201511/1448001777757.jpg"/>-->
+<!--                    </div>-->
+<!--                    <div class="col-xs-6 col-sm-2 col-md-2">-->
+<!--                        <img style="width: 100%" src="http://www.bgxgroup.com/upload/201511/1448001777757.jpg"/>-->
+<!--                    </div>-->
+<!--                    <div class="col-xs-6 col-sm-2 col-md-2">-->
+<!--                        <img style="width: 100%" src="http://www.bgxgroup.com/upload/201511/1448001777757.jpg"/>-->
+<!--                    </div>-->
+<!--                    <div class="col-xs-6 col-sm-2 col-md-2">-->
+<!--                        <img style="width: 100%" src="http://www.bgxgroup.com/upload/201511/1448001777757.jpg"/>-->
+<!--                    </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<div class="container" style="margin-top: 36px">
+    <div class="row">
+        <h3 style="
+                    text-align: center;
+                    font-weight: bold;
+                    margin-bottom: 8px;
+                    ">安全鞋资讯</h3>
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <div>
+                <ul class="index_news" style="padding-right: 38px;">
+                    <li  th:each="info,s:${infosl}"><a th:href="@{/infoDetail(id=${info.id})}" title="在人工智能炒热机器人时，也被人把风带进了教" th:text="${info.title}">在人工智能炒热机器人时，也被人把风带进了教</a><span
+                            class='news_time' th:text="${info.updated}">2017-09-05</span></li>
+<!--                    <li><a href="javascript:;" title="阿里影业为未来增持淘票票">阿里影业为未来增持淘票票</a><span-->
+<!--                            class='news_time'>2017-09-05</span></li>-->
+<!--                    <li><a href="javascript:;" title="刮着大风的人工智能">刮着大风的人工智能</a><span class='news_time'>2017-09-05</span>-->
+<!--                    </li>-->
+<!--                    <li><a href="javascript:;" title="传统企业如何向新零售转型？">传统企业如何向新零售转型？</a><span-->
+<!--                            class='news_time'>2017-09-05</span></li>-->
+<!--                    <li><a href="javascript:;" title="比特币价格回稳，但考验才刚刚开始">比特币价格回稳，但考验才刚刚开始</a><span class='news_time'>2017-09-05</span>-->
+<!--                    </li>-->
+
+                </ul>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <div>
+                <ul class="index_news" style="padding-right: 38px;">
+                    <li th:each="info,s:${infoslr}"><a th:href="@{/infoDetail(id=${info.id})}" title="在人工智能炒热机器人时，也被人把风带进了教" th:text="${info.title}">在人工智能炒热机器人时，也被人把风带进了教</a><span
+                            class='news_time' th:text="${info.updated}">2017-09-05</span></li>
+<!--                    <li><a href="javascript:;" title="阿里影业为未来增持淘票票">阿里影业为未来增持淘票票</a><span-->
+<!--                            class='news_time'>2017-09-05</span></li>-->
+<!--                    <li><a href="javascript:;" title="刮着大风的人工智能">刮着大风的人工智能</a><span class='news_time'>2017-09-05</span>-->
+<!--                    </li>-->
+<!--                    <li><a href="javascript:;" title="传统企业如何向新零售转型？">传统企业如何向新零售转型？</a><span-->
+<!--                            class='news_time'>2017-09-05</span></li>-->
+<!--                    <li><a href="javascript:;" title="比特币价格回稳，但考验才刚刚开始">比特币价格回稳，但考验才刚刚开始</a><span class='news_time'>2017-09-05</span>-->
+<!--                    </li>-->
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom footer_nav">
+    <div class="foot_nav btn-group dropup"><a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                                              aria-expanded="false" href="javascript:;"><span
+            class="glyphicon glyphicon-share btn-lg" aria-hidden="true"></span> 分享</a>
+
+    </div>
+    <div class="foot_nav"><a href="javascript:;"><span class="glyphicon glyphicon-phone btn-lg"
+                                                       aria-hidden="true"></span>手机</a></div>
+    <div class="foot_nav">
+        <button id="foot_btn" type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                aria-controls="navbar">
+            <a id="gotocate" href="javascript:;"><span class="glyphicon glyphicon-th-list btn-lg"></span> 分类 </a>
+        </button>
+    </div>
+
+    <div class="foot_nav"><a id="gototop" href="javascript:;"><span class="glyphicon glyphicon-circle-arrow-up btn-lg"
+                                                                    aria-hidden="true"></span>顶部</a></div>
+</nav>
+<footer th:include="~{publicZH::footer1}"></footer>
+
+
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="libs/anime/anime.min.js"></script>
+<script src="libs/glide/glide.min.js"></script>
+<script src="libs/isotope/isotope.pkgd.min.js"></script>
+<script src="libs/smooth-scroll/smooth-scroll.polyfills.min.js"></script>
+<script src="js/swiper-bundle.min.js"></script>
+<script src="libs/scrollReveal/scrollreveal.min.js"></script>
+<script src="https://map.qq.com/api/gljs?v=1.exp&key=ULXBZ-MTXKD-LEN4G-PVOYH-RGD72-3OBS6"></script>
+
+</body>
+</html>
+<script type="text/javascript" th:inline="javascript">
+    /*<![CDATA[*/
+    $(document).ready(function(){
+        console.log([[${productList}]] )
+        //模块逐渐显示动画效果
+        const staggeringOption = {
+            delay: 300,
+            distance: "50px",
+            duration: 500,
+            easing: "ease-in-out",
+            origin: "bottom",
+        };
+
+        const staggeringOption1 = {
+            delay: 600,
+            distance: "100px",
+            duration: 800,
+            easing: "ease-in-out",
+            origin: "bottom",
+        };
+
+        const staggeringOption2 = {
+            delay: 600,
+            distance: "100px",
+            duration: 800,
+            easing: "ease-in-out",
+            origin: "left",
+        };
+
+        const staggeringOption3 = {
+            delay: 600,
+            distance: "100px",
+            duration: 800,
+            easing: "ease-in-out",
+            origin: "right",
+        };
+        ScrollReveal().reveal(".myleft", { staggeringOption2, interval: 350 });
+        ScrollReveal().reveal(".myright", { staggeringOption3, interval: 350 });
+        ScrollReveal().reveal(".feature", { staggeringOption1, interval: 350 });
+        // ScrollReveal().reveal(".service-item", { staggeringOption, interval: 350 });
+
+// 数字增加效果 + 背景图随滑动上下移动效果
+        const dataSectionEl = document.querySelector(".data-section");
+        ScrollReveal().reveal(".data-section", {
+            beforeReveal: () => {
+                anime({
+                    targets: ".data-piece .num",
+                    innerHTML: (el) => {
+                        return [0, el.innerHTML];
+                    },
+                    duration: 2000,
+                    round: 1,
+                    easing: "easeInExpo",
+                });
+                dataSectionEl.style.backgroundPosition = `center calc(50% - ${
+                    dataSectionEl.getBoundingClientRect().bottom / 5
+                }px)`;
+            },
+        });
+
+        $(".nr .l1").addClass("cur")
+
+        // 商品分类li注册监听事件
+        $(".nr .l1").hover(function () {
+            $(".nr li").each(function () {
+                $(this).removeClass("cur");
+            })
+            $(this).addClass("cur")
+            $(".li1").css("display", "block")
+            $(".li2").css("display", "none")
+            $(".li3").css("display", "none")
+            $(".li4").css("display", "none")
+        })
+
+        $(".nr .l2").hover(function () {
+            $(".nr li").each(function () {
+                $(this).removeClass("cur");
+            })
+            $(this).addClass("cur")
+            $(".li1").css("display", "none")
+            $(".li2").css("display", "block")
+            $(".li3").css("display", "none")
+            $(".li4").css("display", "none")
+        })
+
+        $(".nr .l3").hover(function () {
+            $(".nr li").each(function () {
+                $(this).removeClass("cur");
+            })
+            $(this).addClass("cur")
+            $(".li1").css("display", "none")
+            $(".li2").css("display", "none")
+            $(".li3").css("display", "block")
+            $(".li4").css("display", "none")
+        })
+        $(".nr .l4").hover(function () {
+            $(".nr li").each(function () {
+                $(this).removeClass("cur");
+            })
+            $(this).addClass("cur")
+            $(".li1").css("display", "none")
+            $(".li2").css("display", "none")
+            $(".li3").css("display", "none")
+            $(".li4").css("display", "block")
+        })
+    });
+
+    window.onload = initMap
+
+    effect = 1;
+    var swiper = new Swiper('.swiper-container0', {
+        loop: true,
+        speed: 3500,
+        autoplay: {
+            delay: 0,
+            stopOnLastSlide: false,
+            disableOnInteraction: false,
+        },
+        breakpoints: {
+            320: {  //当屏幕宽度大于等于320
+                slidesPerView: 3,
+                spaceBetween: 10
+            },
+            768: {  //当屏幕宽度大于等于768
+                slidesPerView: 4,
+                spaceBetween: 20
+            },
+            1280: {  //当屏幕宽度大于等于1280
+                slidesPerView: 5,
+                spaceBetween: 30
+            }
+        },
+        slidesPerView: 5,
+        spaceBetween: 30,
+        centeredSlides : true,
+        watchSlidesProgress : true,
+        on: {
+            setTranslate: function(){
+                slides = this.slides
+                for(i=0; i< slides.length; i++){
+                    slide = slides.eq(i)
+                    progress = slides[i].progress
+                    //slide.html(progress.toFixed(2)); 看清楚progress是怎么变化的
+                    // slide.css({'opacity': '','background': ''});slide.transform('');//清除样式
+
+                    if(effect == 1){
+                        slide.transform('scale('+(1 - Math.abs(progress)/8)+')');
+                    }else if(effect == 2){
+                        slide.css('opacity',(1-Math.abs(progress)/6));
+                        slide.transform('translate3d(0,'+ Math.abs(progress)*20+'px, 0)');
+                    }
+                    else if(effect == 3){
+                        slide.transform('rotate('+ progress*30+'deg)');
+                    }else if(effect == 4){
+                        slide.css('background','rgba('+ (255 - Math.abs(progress)*20) +','+ (127 + progress*32) +',' + Math.abs(progress)*64 + ')');
+                    }
+
+                }
+            },
+            setTransition: function(transition) {
+                for (var i = 0; i < this.slides.length; i++) {
+                    var slide = this.slides.eq(i)
+                    slide.transition(transition);
+                }
+            },
+        },
+        navigation: {
+            nextEl: '.swiper-button-next1',
+            prevEl: '.swiper-button-prev1',
+        },
+        pagination: {
+            el: '.swiper-pagination1',
+            clickable: true,
+        },
+    });
+
+    function mysearch() {
+        console.log('searchsss')
+        window.location.href = '/product'
+    }
+
+
+    //地图初始化函数，本例取名为init，开发者可根据实际情况定义
+    function initMap() {
+        //定义地图中心点坐标
+        var center = new TMap.LatLng(35.562343,118.485432)
+        //定义map变量，调用 TMap.Map() 构造函数创建地图
+        var map = new TMap.Map(document.getElementById('container1'), {
+            center: center,//设置地图中心点坐标
+            zoom: 17,   //设置地图缩放级别
+            pitch: 43.5,  //设置俯仰角
+            rotation: 45    //设置地图旋转角度
+        });
+
+        //创建并初始化MultiMarker
+        var markerLayer = new TMap.MultiMarker({
+            map: map,  //指定地图容器
+            //样式定义
+            styles: {
+                //创建一个styleId为"myStyle"的样式（styles的子属性名即为styleId）
+                "myStyle": new TMap.MarkerStyle({
+                    "width": 25,  // 点标记样式宽度（像素）
+                    "height": 35, // 点标记样式高度（像素）
+                    "src": 'favicon.ico',  //图片路径
+                    //焦点在图片中的像素位置，一般大头针类似形式的图片以针尖位置做为焦点，圆形点以圆心位置为焦点
+                    "anchor": { x: 16, y: 32 }
+                })
+            },
+            //点标记数据数组
+            geometries: [{
+                "id": "1",   //点标记唯一标识，后续如果有删除、修改位置等操作，都需要此id
+                "styleId": 'myStyle',  //指定样式id
+                "position": new TMap.LatLng(35.561536,118.485778),  //点标记坐标位置
+                "properties": {//自定义属性
+                    "title": "春江鞋业"
+                }
+            }
+            ]
+        });
+    }
+
+    /*]]>*/
+</script>

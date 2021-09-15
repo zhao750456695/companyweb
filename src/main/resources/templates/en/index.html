@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" th:attr="content=${description}">
+    <meta name="keywords" th:attr="content=${keywords}">
+    <title th:text="${title}">春江鞋业|chunjiangshoes</title>
+    <link rel="icon" th:href="@{${iconUrl}}" type="image/x-icon">
+    <link rel="shortcut icon" th:href="@{${iconUrl}}" type="image/x-icon">
+<!--    <script src="libs/scrollReveal/scrollreveal.min.js"></script>-->
+<!--    <link-->
+<!--      rel="stylesheet"-->
+<!--      href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css"-->
+<!--    />-->
+<!--    <link rel="stylesheet" href="libs/glide/glide.core.min.css" />-->
+<!--    <link rel="stylesheet" href="libs/glide/glide.theme.min.css" />-->
+<!--    <link rel="stylesheet" href="style.css" />-->
+    <link rel="stylesheet" th:href="@{~/libs/glide/glide.core.min.css}" />
+    <link rel="stylesheet" th:href="@{~/libs/glide/glide.theme.min.css}" />
+    <link rel="stylesheet" th:href="@{~/style.css}" />
+    <script th:src="@{~/libs/scrollReveal/scrollreveal.min.js}"></script>
+
+    <style th:inline="css">
+      header {
+        height: 75px;
+        margin: 0 auto;
+        position: absolute;
+        top: 0;
+        width: 100%;
+      }
+      .tech-back {
+        background:url([[${techimag}]]) no-repeat;
+        width: 80%;
+        height: 20vw;
+        margin: 10px auto;
+        background-size: 100% 100%;
+      }
+      .service {
+        width: 100%;
+        padding-top: 131px;
+        padding-left: 0;
+        padding-right: 0;
+      }
+      .cata {
+        height: 70px;
+        line-height: 70px;
+        font-size: 28px;
+        font-weight: bold;
+        text-align: center;
+      }
+      .lv {
+        color: #07913b;
+      }
+      .cheng {
+        color: #e95412;
+      }
+      .tech-intro {
+        margin-bottom: 8px;
+      }
+      .bpn, .bvn {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+<!--    <header>-->
+<!--      <div class="logo">CHUNJIANG</div>-->
+<!--      <nav>-->
+<!--        <a href="/en/index">HOME</a>-->
+<!--        <a href="/en/aboutus">ABOUT US</a>-->
+<!--        <a href="/en/news">NEWS</a>-->
+<!--        <a href="/en/product">PRODUCT</a>-->
+<!--        <a href="/en/tech">TECHNOLEDGE</a>-->
+<!--        <a href="/en/contactus">CONTACT US</a>-->
+<!--        <i class="fas fa-search"></i>-->
+<!--      </nav>-->
+<!--      <div class="bu-->
+
+<!--      rger">-->
+<!--        <div class="burger-line1"></div>-->
+<!--        <div class="burger-line2"></div>-->
+<!--        <div class="burger-line3"></div>-->
+<!--      </div>-->
+<!--    </header>-->
+    <header th:include="~{publicEN::head1}"></header>
+    <div id="home" class="glide">
+      <div class="glide__track" data-glide-el="track">
+        <div class="glide__slides">
+          <div th:each="bp,iterStat:${list}" class="glide__slide">
+            <div class="slide-caption">
+              <h1 th:text="${bp.bigTitle}">专注制鞋</h1>
+              <h3 th:text="${bp.smallTitle}">工匠精神，精益求精</h3>
+              <a th:href="@{${bp.link}}"><button class="explor-btn">More</button></a>
+            </div>
+            <div class="backdrop"></div>
+            <img th:if="${bp.isImg}" th:src="@{${bp.url}}" alt="" />
+            <video th:if="${bp.isVideo}" th:src="@{${bp.url}}" muted autoplay loop></video>
+          </div>
+
+<!--          <div class="glide__slide">-->
+<!--            <div class="slide-caption left">-->
+<!--              <h1>精心服务</h1>-->
+<!--              <h3>-->
+<!--                精诚所至，金石为开，服务到永远-->
+<!--              </h3>-->
+<!--              <button class="explor-btn">探索更多</button>-->
+<!--            </div>-->
+<!--            <div class="backdrop"></div>-->
+<!--            <video src="videos/working-man.mp4" muted autoplay loop></video>-->
+<!--          </div>-->
+
+        </div>
+
+      </div>
+      <div class="glide__arrows" data-glide-el="controls">
+        <button class="glide__arrow glide__arrow--left" data-glide-dir="<">
+          <
+        </button>
+        <button class="glide__arrow glide__arrow--right" data-glide-dir=">">
+          >
+        </button>
+      </div>
+      <div class="glide__bullets" data-glide-el="controls[nav]">
+        <button class="glide__bullet" data-glide-dir="0"></button>
+        <button class="glide__bullet" data-glide-dir="1"></button>
+      </div>
+    </div>
+
+    <div class="content-wrapper">
+
+      <section id="about-us" class="about-us">
+        <h2 class="title1" th:text="${abouth1}">关于春江</h2>
+        <p class="intro" th:text="${abouth2}">
+          走进春江，了解春江
+        </p>
+
+        <div class="features">
+
+          <div th:each="item,iterStat:${aboutlist}" class="feature">
+            <i th:if="${not #strings.isEmpty(item.h1)}" class="fas fa-star"></i>
+            <h4 class="feature-title" th:text="${item.h1}">公司简介</h4>
+            <p class="feature-content" th:text="${item.h2}">
+              专业研发和生产安全鞋、工作鞋和户外鞋
+            </p>
+          </div>
+
+<!--          <div class="feature">-->
+<!--            <i class="fas fa-users"></i>-->
+<!--            <h4 class="feature-title">核心价值观</h4>-->
+<!--            <p class="feature-content">-->
+<!--              诚信、拼搏、热爱、奉献-->
+<!--            </p>-->
+<!--          </div>-->
+<!--          <div class="feature">-->
+<!--            <i class="fas fa-arrow-up"></i>-->
+<!--            <h4 class="feature-title">发展历程</h4>-->
+<!--            <p class="feature-content">-->
+<!--              公司历经十数年发展，日益壮大-->
+<!--            </p>-->
+<!--          </div>-->
+
+<!--          <div class="feature">-->
+<!--            <i class="fas fa-sitemap"></i>-->
+<!--            <h4 class="feature-title">组织架构</h4>-->
+<!--            <p class="feature-content">-->
+<!--              公司组织合理规范，有多个下属子公司-->
+<!--            </p>-->
+<!--          </div>-->
+
+<!--          <div class="feature">-->
+<!--            <i class="fas fa-check"></i>-->
+<!--            <h4 class="feature-title">公司资质</h4>-->
+<!--            <p class="feature-content">-->
+<!--              取得国内外一百多项认证-->
+<!--            </p>-->
+<!--          </div>-->
+
+<!--          <div class="feature">-->
+<!--            <i class="fas fa-desktop"></i>-->
+<!--            <h4 class="feature-title">网页设计</h4>-->
+<!--            <p class="feature-content">-->
+<!--              为企业设计独特并能完美体现企业价值观的视觉-->
+<!--            </p>-->
+<!--          </div>-->
+
+<!--          <div class="feature">-->
+<!--            <i class="fas fa-tachometer-alt"></i>-->
+<!--            <h4 class="feature-title">网站优化</h4>-->
+<!--            <p class="feature-content">-->
+<!--              为企业设计独特并能完美体现企业价值观的视觉-->
+<!--            </p>-->
+<!--          </div>-->
+
+<!--          <div class="feature">-->
+<!--            <i class="fas fa-lightbulb"></i>-->
+<!--            <h4 class="feature-title">品牌营销</h4>-->
+<!--            <p class="feature-content">-->
+<!--              为企业设计独特并能完美体现企业价值观的视觉-->
+<!--            </p>-->
+<!--          </div>-->
+        </div>
+      </section>
+
+      <section class="data-section">
+        <div th:each="item,iterStat:${aboutlist1}" class="data-piece">
+          <i th:if="${item.h1}" class="fas fa-certificate"></i>
+          <div class="num" th:text="${item.h1}">17</div>
+          <div class="data-desc" th:text="${item.h2}">年制鞋经验</div>
+        </div>
+<!--        <div class="data-piece">-->
+<!--          <i class="fas fa-certificate"></i>-->
+<!--          <div class="num">16</div>-->
+<!--          <div class="data-desc">万月产量</div>-->
+<!--        </div>-->
+<!--        <div class="data-piece">-->
+<!--          <i class="fas fa-certificate"></i>-->
+<!--          <div class="num">128</div>-->
+<!--          <div class="data-desc">项认证</div>-->
+<!--        </div>-->
+<!--        <div class="data-piece">-->
+<!--          <i class="fas fa-certificate"></i>-->
+<!--          <div class="num">3</div>-->
+<!--          <div class="data-desc">个子公司</div>-->
+<!--        </div>-->
+      </section>
+
+
+
+      <section id="company-activities" class="company-activities">
+        <h2 class="title1" th:text="${dynamic.h1}">公司动态</h2>
+        <p class="intro" th:text="${dynamic.h2}">关注公司动态，获取第一时间消息</p>
+        <div class="activities">
+          <div th:each="news,iterStat:${newsList}" class="activity">
+            <div class="act-image-wrapper">
+              <img th:src="@{${news.cover}}" alt="">
+            </div>
+            <div class="meta">
+
+
+            </div>
+            <h2 class="act-title" th:text="${news.title}">公司成功取得XXX资历认证</h2>
+            <article th:text="${news.descri}">
+              春江鞋业的规范生产获得XXX认证
+            </article>
+            <a th:href="@{/en/newsDetail(id=${news.id})}"><button class="read-more-btn">more</button></a>
+            <p class="date-publish" style="float: right;margin-top: 20px">
+              <i class="far fa-calendar"></i><span th:text="${news.dt}">2020年4月6号</span>
+            </p>
+          </div>
+<!--          <div class="activity">-->
+<!--            <div class="act-image-wrapper">-->
+<!--              <img src="./images/red-suspension-bridge-3493772.jpg" alt="">-->
+<!--            </div>-->
+<!--            <div class="meta">-->
+<!--              <p class="date-publish">-->
+<!--                <i class="far fa-calendar"></i>2020年4月6号-->
+<!--              </p>-->
+<!--              <p class="comments"><i class="far fa-comments"></i>33</p>-->
+<!--            </div>-->
+<!--            <h2 class="act-title">春江鞋业举行安全生产演练完</h2>-->
+<!--            <article>-->
+<!--              安全生产，重于泰山，春江鞋业举行2021年度安全生产演练-->
+<!--            </article>-->
+<!--            <button class="read-more-btn">阅读更多</button>-->
+<!--          </div>-->
+<!--          <div class="activity">-->
+<!--            <div class="act-image-wrapper">-->
+<!--              <img src="./images/watercrafts-on-river-3464632.jpg" alt="">-->
+<!--            </div>-->
+<!--            <div class="meta">-->
+<!--              <p class="date-publish">-->
+<!--                <i class="far fa-calendar"></i>2020年4月6号-->
+<!--              </p>-->
+<!--              <p class="comments"><i class="far fa-comments"></i>33</p>-->
+<!--            </div>-->
+<!--            <h2 class="act-title">春江鞋业成功交付xxx万双安全鞋订单</h2>-->
+<!--            <article>-->
+<!--              春江鞋业为xxx客户提供的xxx万双安全鞋订单成功交付-->
+<!--            </article>-->
+<!--            <button class="read-more-btn">阅读更多</button>-->
+<!--          </div>-->
+        </div>
+      </section>
+
+      <section id="showcases" class="showcases section-bg">
+        <h2 class="title1" th:text="${product.h1}">产品丰富</h2>
+        <p class="intro" th:text="${product.h2}">
+          公司专业生产安全鞋，工作鞋，户外鞋，产品型号齐全
+        </p>
+        <div class="cases">
+          <div th:each="product,iterStat:${productList}" class="case-item scence">
+            <img
+              th:src="@{${product.listImage}}"
+              alt=""
+            />
+          </div>
+<!--          <div class="case-item web science">-->
+<!--            <img-->
+<!--              src="img/2.jpg"-->
+<!--              alt=""-->
+<!--            />-->
+<!--          </div>-->
+<!--          <div class="case-item mobile">-->
+<!--            <img src="img/3.jpg" alt="" />-->
+<!--          </div>-->
+<!--          <div class="case-item web science">-->
+<!--            <img src="img/4.jpg" alt="" />-->
+<!--          </div>-->
+<!--          <div class="case-item mobile">-->
+<!--            <img-->
+<!--              src="img/5.jpg"-->
+<!--              alt=""-->
+<!--            />-->
+<!--          </div>-->
+<!--          <div class="case-item web mobile">-->
+<!--            <img src="img/6.jpg" alt="" />-->
+<!--          </div>-->
+<!--          <div class="case-item science">-->
+<!--            <img-->
+<!--              src="img/7.jpg"-->
+<!--              alt=""-->
+<!--            />-->
+<!--          </div>-->
+<!--          <div class="case-item web">-->
+<!--            <img src="img/8.jpg" alt="" />-->
+<!--          </div>-->
+        </div>
+
+      </section>
+
+      <section id="service" class="service">
+        <h2 class="title1" th:text="${tech.h1}">技术领先</h2>
+        <p class="intro tech-intro" th:text="${tech.h2}">
+          公司技术先进，行业领先
+        </p>
+        <div class="cata"><span class="lv">DIRECT INJECTION</span> &amp; <span class="cheng">CEMENTED</span></div>
+        <div class="tech-back"></div>
+<!--        <d class="services">-->
+<!--          <div class="service-item">-->
+<!--            <i class="fas fa-comments"></i>-->
+<!--            <p class="service-title">生产材料</p>-->
+<!--            <p class="service-content">-->
+<!--              春江鞋业生产材料-->
+<!--            </p>-->
+<!--          </div>-->
+<!--          <div class="service-item">-->
+<!--            <i class="fas fa-comments"></i>-->
+<!--            <p class="service-title">技术规格</p>-->
+<!--            <p class="service-content">-->
+<!--              春江鞋业技术规格-->
+<!--            </p>-->
+<!--          </div>-->
+<!--          <div class="service-item">-->
+<!--            <i class="fas fa-comments"></i>-->
+<!--            <p class="service-title">检验设备</p>-->
+<!--            <p class="service-content">-->
+<!--              春江鞋业检验设备-->
+<!--            </p>-->
+<!--          </div>-->
+<!--        </d>-->
+
+      </section>
+
+
+    </div>
+<!--    <footer>-->
+<!--      <div class="footer-menus">-->
+<!--        <div class="contact-us">-->
+<!--          <p class="mene-title">联系我们</p>-->
+<!--          <p>地址：山东省沂南县北外环路东段</p>-->
+<!--          <p>电话：0086-539-3261558</p>-->
+<!--          <p>传真：0086-539-3261559</p>-->
+<!--          <p>电子邮箱：lin@chunjiangshoes.com;Ly-cj@126.com</p>-->
+<!--        </div>-->
+<!--        <div class="service-menu footer-menu">-->
+<!--          <p class="menu-title">产品中心</p>-->
+<!--          <ul class="menu-items">-->
+<!--            <li><a href="#">安全鞋</a></li>-->
+<!--            <li><a href="#">工作鞋</a></li>-->
+<!--            <li><a href="#">户外鞋</a></li>-->
+<!--          </ul>-->
+<!--        </div>-->
+<!--        <div class="service-menu footer-menu">-->
+<!--          <p class="menu-title">技术中心</p>-->
+<!--          <ul class="menu-items">-->
+<!--            <li><a href="#">生产材料</a></li>-->
+<!--            <li><a href="#">技术规格</a></li>-->
+<!--            <li><a href="#">检验设备</a></li>-->
+<!--          </ul>-->
+<!--        </div>-->
+<!--        <div class="service-menu footer-menu">-->
+<!--          <p class="menu-title">公司动态</p>-->
+<!--          <ul class="menu-items">-->
+<!--            <li><a href="#">信息公开</a></li>-->
+<!--            <li><a href="#">最近新闻</a></li>-->
+<!--          </ul>-->
+<!--        </div>-->
+<!--        <div class="service-menu footer-menu">-->
+<!--          <p class="menu-title">帮助与支持</p>-->
+<!--          <ul class="menu-items">-->
+<!--            <li><a href="#">帮助中心</a></li>-->
+<!--            <li><a href="#">联系客服</a></li>-->
+<!--            <li><a href="#">文档资源</a></li>-->
+<!--          </ul>-->
+<!--        </div>-->
+<!--        <p class="icp-info"><a href="http://www.beian.miit.gov.cn/">鲁ICP备18021651号-2</a></p>-->
+<!--        <p class="rights">2020 春江鞋业 </p>-->
+<!--        <div class="scrollToTop">-->
+<!--          <a href="#" class="fas fa-chevron-up"></a>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </footer>-->
+    <footer th:include="~{publicEN::footer}"></footer>
+    <script th:src="@{~/js/jquery-3.4.1.min.js}"></script>
+    <script th:src="@{~/libs/anime/anime.min.js}"></script>
+    <script th:src="@{~/libs/glide/glide.min.js}"></script>
+    <script th:src="@{~/libs/isotope/isotope.pkgd.min.js}"></script>
+    <script th:src="@{~/libs/smooth-scroll/smooth-scroll.polyfills.min.js}"></script>
+    <script th:src="@{~/index.js}"></script>
+    <script>
+      $(function(){
+        $()
+      });
+    </script>
+  </body>
+</html>

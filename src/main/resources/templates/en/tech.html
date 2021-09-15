@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" th:attr="content=${description}">
+    <meta name="keywords" th:attr="content=${keywords}">
+    <title th:text="${title}">春江鞋业|chunjiangshoes</title>
+    <link rel="icon" th:href="@{${iconUrl}}" type="image/x-icon">
+    <link rel="shortcut icon" th:href="@{${iconUrl}}" type="image/x-icon">
+    <script th:src="@{~/libs/scrollReveal/scrollreveal.min.js}"></script>
+    <link
+            rel="stylesheet"
+            href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css"
+    />
+    <link rel="stylesheet" th:href="@{~/libs/glide/glide.core.min.css}" />
+    <link rel="stylesheet" th:href="@{~/libs/glide/glide.theme.min.css}" />
+    <link th:href="@{~/css/bootstrap/bootstrap.min.css}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{~/style.css}" />
+
+
+    <style th:inline="css">
+        .headimg {
+            background: url([[${headimag}]]) 0px 0px / contain no-repeat fixed;
+            padding-top: 27%;
+            height: 0;
+            /*position: relative;*/
+            /*top: -80px;*/
+            z-index: 50;
+        }
+        header {
+            height: 75px;
+            background: rgba(0, 0, 0, 0.8);
+            margin: 0 auto;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+
+        .breadcrumb {
+            border-bottom: 1px solid #dcdcdc;
+            min-height: 40px;
+            width: 80%;
+            margin: 36px auto;
+            background-color: #fff;
+        }
+        .breadcrumb a {
+            color: #999;
+            text-decoration: none;
+
+        }
+
+        /*.container {*/
+        /*    width: 950px;*/
+        /*}*/
+        .toggle-icon {
+            margin: .5em auto;
+        }
+        ol, ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .toggle-tas-nav .toggle-icon li {
+            width: 14.28%;
+        }
+        .toggle-icon li {
+            border-left: dashed 1px #d4d4d4;
+            padding: 1em 0;
+            float: left;
+            text-align: center;
+            position: relative;
+            z-index: 3;
+        }
+        .toggle-icon li a {
+            text-decoration: none;
+            display: block;
+            position: relative;
+            z-index: 1;
+            margin: 0 auto;
+        }
+        .toggle-tas-nav .toggle-icon li a span:first-child {
+            width: 40%;
+        }
+        .toggle-icon li.active a span {
+            color: #1a355e;
+        }
+        .toggle-icon li a span:first-child {
+            width: 70%;
+        }
+        .toggle-icon li a span {
+            margin-top: 1em;
+            display: block;
+            color: #424242;
+            margin: 0 auto;
+        }
+        .center-block {
+            display: block;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        .img-responsive, .thumbnail a>img, .thumbnail>img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+        .toggle-icon li.active a span {
+            color: #1a355e;
+        }
+        .toggle-icon li a span:nth-child(2) {
+            margin-top: 1.75em;
+        }
+        .tas-tech-grid {
+            margin: 3em auto;
+        }
+        .tas-tech-grid .tas-tech-grid-item {
+            position: relative;
+        }
+        .tas-tech-grid .tas-tech-grid-item a {
+            position: absolute;
+        }
+        .center-block {
+            display: block;
+            margin-right: auto;
+            margin-left: auto;
+        }
+    </style>
+</head>
+<body>
+<header th:include="~{publicEN::head1}"></header>
+
+<div class="headimg">
+
+</div>
+
+
+<div class=" breadcrumb">
+    <a href="/">HOME</a>&gt;<a class="active">TECH</a>
+</div>
+
+<div class="container toggle-tas-nav">
+<!--    <ul class="toggle-icon  clearfix">-->
+<!--        <li class="active">-->
+<!--            <div style="display:none;" id="xxx">Link</div>-->
+<!--            <a href="/technology-and-service/hegii-technology/intelligence/" data-control="">-->
+<!--<span>-->
+<!--<img src="img/mat2.png" data-img-on="img/mat2.png" data-img-off="img/mat1.png" class="img-responsive center-block">-->
+<!--</span>-->
+<!--                <span>制鞋材料</span>-->
+<!--            </a>-->
+<!--        </li>-->
+<!--        <li class="">-->
+<!--            <div style="display:none;" id="xxx">Link</div>-->
+<!--            <a href="/technology-and-service/hegii-technology/toilet/" data-control="">-->
+<!--<span>-->
+<!--<img src="img/tech1.png" data-img-on="/media/3100/toggle-tech-02-on.jpg" data-img-off="/media/3099/toggle-tech-02-off.jpg" class="img-responsive center-block">-->
+<!--</span>-->
+<!--                <span>技术规格</span>-->
+<!--            </a>-->
+<!--        </li>-->
+<!--        <li class="">-->
+<!--            <div style="display:none;" id="xxx">Link</div>-->
+<!--            <a href="/technology-and-service/hegii-technology/bathtub/" data-control="">-->
+<!--<span>-->
+<!--<img src="img/mac1.png" data-img-on="/media/3102/toggle-tech-03-on.jpg" data-img-off="/media/3101/toggle-tech-03-off.jpg" class="img-responsive center-block">-->
+<!--</span>-->
+<!--                <span>实验设备</span>-->
+<!--            </a>-->
+<!--        </li>-->
+<!--&lt;!&ndash;        <li class="">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div style="display:none;" id="xxx">Link</div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <a href="/technology-and-service/hegii-technology/bathroomcabinet/" data-control="">&ndash;&gt;-->
+<!--&lt;!&ndash;<span>&ndash;&gt;-->
+<!--&lt;!&ndash;<img src="/media/3103/toggle-tech-04-off.jpg" data-img-on="/media/3104/toggle-tech-04-on.jpg" data-img-off="/media/3103/toggle-tech-04-off.jpg" class="img-responsive center-block">&ndash;&gt;-->
+<!--&lt;!&ndash;</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                <span>浴室柜产品技术</span>&ndash;&gt;-->
+<!--&lt;!&ndash;            </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        </li>&ndash;&gt;-->
+<!--&lt;!&ndash;        <li class="">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div style="display:none;" id="xxx">Link</div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <a href="/technology-and-service/hegii-technology/shower/" data-control="">&ndash;&gt;-->
+<!--&lt;!&ndash;<span>&ndash;&gt;-->
+<!--&lt;!&ndash;<img src="/media/3105/toggle-tech-05-off.jpg" data-img-on="/media/3106/toggle-tech-05-on.jpg" data-img-off="/media/3105/toggle-tech-05-off.jpg" class="img-responsive center-block">&ndash;&gt;-->
+<!--&lt;!&ndash;</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                <span>花洒产品技术</span>&ndash;&gt;-->
+<!--&lt;!&ndash;            </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        </li>&ndash;&gt;-->
+<!--&lt;!&ndash;        <li class="">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div style="display:none;" id="xxx">Link</div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <a href="/technology-and-service/hegii-technology/showerroom/" data-control="">&ndash;&gt;-->
+<!--&lt;!&ndash;<span>&ndash;&gt;-->
+<!--&lt;!&ndash;<img src="/media/3107/toggle-tech-06-off.jpg" data-img-on="/media/3108/toggle-tech-06-on.jpg" data-img-off="/media/3107/toggle-tech-06-off.jpg" class="img-responsive center-block">&ndash;&gt;-->
+<!--&lt;!&ndash;</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                <span>淋浴房产品技术</span>&ndash;&gt;-->
+<!--&lt;!&ndash;            </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        </li>&ndash;&gt;-->
+<!--&lt;!&ndash;        <li class="">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div style="display:none;" id="xxx">Link</div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <a href="/technology-and-service/hegii-technology/faucet/" data-control="">&ndash;&gt;-->
+<!--&lt;!&ndash;<span>&ndash;&gt;-->
+<!--&lt;!&ndash;<img src="/media/3109/toggle-tech-07-off.jpg" data-img-on="/media/3096/toggle-tech-07-on.jpg" data-img-off="/media/3109/toggle-tech-07-off.jpg" class="img-responsive center-block">&ndash;&gt;-->
+<!--&lt;!&ndash;</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                <span>龙头产品技术</span>&ndash;&gt;-->
+<!--&lt;!&ndash;            </a>&ndash;&gt;-->
+<!--&lt;!&ndash;        </li>&ndash;&gt;-->
+<!--    </ul>-->
+
+<div style="float: left;width: 16%;margin-left: -2%">
+    <ul class="nav nav-pills nav-stacked">
+        <li id="mat" role="presentation" class="active"><a th:href="@{/en/tech(cat=1)}">MATERIALS</a></li>
+        <li id="sta" role="presentation"><a th:href="@{/en/tech(cat=2)}">TECH SPECS</a></li>
+        <li id="eqi" role="presentation"><a th:href="@{/en/tech(cat=3)}">TESTING EQUIPMENTS</a></li>
+    </ul>
+</div>
+
+
+    <div style="float: right; width: 80%">
+        <div th:if="${cat}==1">
+            <div th:each="p,s: ${materia}">
+                <img th:src="@{${p.getUrl()}}" class="img-responsive center-block">
+            </div>
+        </div>
+        <div th:if="${cat}==2">
+            <div th:each="p,s: ${standard}">
+                <img th:src="@{${p.getUrl()}}" class="img-responsive center-block">
+            </div>
+        </div>
+        <div th:if="${cat}==3">
+            <div th:each="p,s: ${equipment}">
+                <img th:src="@{${p.getUrl()}}" class="img-responsive center-block">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<footer th:include="~{publicEN::footer}"></footer>
+<script type="text/javascript" th:src="@{~/js/jquery-3.4.1.min.js}"></script>
+<script th:src="@{~/libs/anime/anime.min.js}"></script>
+<script th:src="@{~/libs/glide/glide.min.js}"></script>
+<script th:src="@{~/libs/isotope/isotope.pkgd.min.js}"></script>
+<script th:src="@{~/libs/smooth-scroll/smooth-scroll.polyfills.min.js}"></script>
+<script th:src="@{~/index1.js}"></script>
+<script type="text/javascript" th:inline="javascript">
+    /*<![CDATA[*/
+
+    $(document).ready(function () {
+        $(".nav-stacked li").each(function(){
+            $(this).removeClass("active")
+        })
+        if ([[${cat}]] === 1){
+            $("#mat").addClass("active")
+        }
+        if ([[${cat}]] === 2){
+            $("#sta").addClass("active")
+        }
+        if ([[${cat}]] === 3){
+            $("#eqi").addClass("active")
+        }
+    });
+
+    /*]]>*/
+</script>
+</body>
+</html>
